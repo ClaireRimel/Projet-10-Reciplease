@@ -11,7 +11,8 @@ import UIKit
 class SearchViewController: UIViewController {
     @IBOutlet var ingredientsTextField: UITextField!
     @IBOutlet var ingredientsTableView: UITableView!
-    var arrayIngredients: [String] = []
+    
+    let model = SearchModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +23,15 @@ class SearchViewController: UIViewController {
     @IBAction func addIngredient() {
         // optional binding
         if let text = ingredientsTextField.text {
-            arrayIngredients.append(text)
+            model.addIngredient(text: text)
             ingredientsTextField.text = ""
             ingredientsTableView.reloadData()
-            print(arrayIngredients)
         }
     }
     
     @IBAction func clearIngredients() {
-        arrayIngredients.removeAll()
+        model.removeIngredients()
         ingredientsTableView.reloadData()
-        print(arrayIngredients)
     }
 }
 
@@ -42,17 +41,14 @@ extension SearchViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayIngredients.count
+        return model.numberOfIngredients()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath) else {
-//            return UITableViewCell()
-//        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath)
 
-        cell.textLabel?.text = arrayIngredients[indexPath.row]
+        cell.textLabel?.text = model.getIngredient(indexPath: indexPath)
         return cell
     }
 }
