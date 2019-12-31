@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        model.delegate = self
     }
     
     
@@ -24,14 +24,11 @@ class SearchViewController: UIViewController {
         // optional binding
         if let text = ingredientsTextField.text {
             model.addIngredient(text: text)
-            ingredientsTextField.text = ""
-            ingredientsTableView.reloadData()
         }
     }
     
     @IBAction func clearIngredients() {
         model.removeIngredients()
-        ingredientsTableView.reloadData()
     }
 }
 
@@ -56,5 +53,17 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+}
+
+extension SearchViewController: SearchModelDelegate {
+    
+    func searchModelDidAddIngredient(_ searchModel: SearchModel) {
+        ingredientsTextField.text = ""
+        ingredientsTableView.reloadData()
+    }
+    
+    func searchModelDidDeleteIngredients(_ searchModel: SearchModel) {
+        ingredientsTableView.reloadData()
     }
 }
