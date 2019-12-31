@@ -15,7 +15,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -25,13 +24,41 @@ class SearchViewController: UIViewController {
         if let text = ingredientsTextField.text {
             arrayIngredients.append(text)
             ingredientsTextField.text = ""
+            ingredientsTableView.reloadData()
             print(arrayIngredients)
         }
     }
     
     @IBAction func clearIngredients() {
         arrayIngredients.removeAll()
+        ingredientsTableView.reloadData()
         print(arrayIngredients)
     }
+}
 
+extension SearchViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayIngredients.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath) else {
+//            return UITableViewCell()
+//        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath)
+
+        cell.textLabel?.text = arrayIngredients[indexPath.row]
+        return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
