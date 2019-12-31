@@ -30,7 +30,8 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func clearIngredients() {
-        
+        arrayIngredients.removeAll()
+        print(arrayIngredients)
     }
 
 }
