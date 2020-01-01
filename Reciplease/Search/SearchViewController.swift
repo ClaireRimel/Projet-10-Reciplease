@@ -30,7 +30,22 @@ class SearchViewController: UIViewController {
     @IBAction func clearIngredients() {
         model.removeIngredients()
     }
+    
+    @IBAction func searchRecipes() {
+        model.request { (result) in
+            switch result {
+            case let .success(recipes):
+                break
+            case let .failure(error):
+                let alertVC = UIAlertController(title: "Erreur", message: error.message, preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alertVC, animated: true, completion: nil)
+            }
+        }
+    }
 }
+
+
 
 extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

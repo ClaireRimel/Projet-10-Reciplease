@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAA3D10A23BD153900C68A8E /* SearchRecipesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */; };
 		FAE4CDFA23BBBD4000124223 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDF923BBBD4000124223 /* AppDelegate.swift */; };
 		FAE4CDFC23BBBD4000124223 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */; };
 		FAE4CDFE23BBBD4000124223 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDFD23BBBD4000124223 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipesError.swift; sourceTree = "<group>"; };
 		FAE4CDF623BBBD4000124223 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE4CDF923BBBD4000124223 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			children = (
 				FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */,
 				FAE4CE1323BBCF6000124223 /* SearchModel.swift */,
+				FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				FAE4CE0423BBBD4000124223 /* Reciplease.xcdatamodeld in Sources */,
 				FAE4CDFE23BBBD4000124223 /* ViewController.swift in Sources */,
 				FAE4CE1423BBCF6000124223 /* SearchModel.swift in Sources */,
+				FAA3D10A23BD153900C68A8E /* SearchRecipesError.swift in Sources */,
 				FAE4CDFA23BBBD4000124223 /* AppDelegate.swift in Sources */,
 				FAE4CDFC23BBBD4000124223 /* SceneDelegate.swift in Sources */,
 			);

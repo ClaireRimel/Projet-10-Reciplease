@@ -41,15 +41,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o0a-zc-45q">
-                                        <rect key="frame" x="0.0" y="37.5" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="37.5" width="414" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf0-US-NJb">
-                                                <rect key="frame" x="0.0" y="0.0" width="344" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="344" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-69-BCo">
-                                                <rect key="frame" x="354" y="0.0" width="60" height="34"/>
+                                                <rect key="frame" x="354" y="0.0" width="60" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="iYX-RL-gYt"/>
                                                 </constraints>
@@ -61,16 +61,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IWK-ce-imz">
-                                        <rect key="frame" x="0.0" y="88.5" width="414" height="30"/>
+                                        <rect key="frame" x="0.0" y="84.5" width="414" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYB-CU-ni8">
-                                                <rect key="frame" x="0.0" y="0.0" width="344" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-yB-lsf">
-                                                <rect key="frame" x="354" y="0.0" width="60" height="30"/>
+                                                <rect key="frame" x="354" y="0.0" width="60" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="xG1-Cp-swb"/>
                                                 </constraints>
@@ -82,7 +82,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="laP-sT-ZCF">
-                                        <rect key="frame" x="0.0" y="135.5" width="414" height="633.5"/>
+                                        <rect key="frame" x="0.0" y="122" width="414" height="600"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientTableViewCell" id="0Vf-mi-SOr">
@@ -99,6 +99,14 @@
                                             <outlet property="delegate" destination="6aU-8m-JId" id="1kP-L7-1Zy"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d9S-DK-hk5">
+                                        <rect key="frame" x="0.0" y="739" width="414" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Search for recipes"/>
+                                        <connections>
+                                            <action selector="searchRecipes" destination="6aU-8m-JId" eventType="touchUpInside" id="bue-Kg-8rh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
