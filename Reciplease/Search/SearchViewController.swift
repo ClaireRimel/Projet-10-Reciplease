@@ -35,11 +35,28 @@ class SearchViewController: UIViewController {
         model.request { (result) in
             switch result {
             case let .success(recipes):
-                break
+                self.performSegue(withIdentifier: "RecipesList", sender: recipes)
+                
             case let .failure(error):
                 let alertVC = UIAlertController(title: "Erreur", message: error.message, preferredStyle: .alert)
                 alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                 self.present(alertVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "RecipesList" {
+            if let destination = segue.destination as? RecipesListViewController,
+                let recipes = sender as? [Recipe] {
+                let model = RecipesListModel(recipes: recipes)
+                destination.model = model
             }
         }
     }

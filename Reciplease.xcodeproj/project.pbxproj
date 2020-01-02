@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C760D6719DC7559CAF4AF273 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68647166A68C05CF1EE06B18 /* Pods_Reciplease.framework */; };
 		FAA3D10A23BD153900C68A8E /* SearchRecipesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */; };
+		FAA3D11123BD302C00C68A8E /* RecipesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3D11023BD302C00C68A8E /* RecipesListViewController.swift */; };
+		FAA3D11523BE5E4500C68A8E /* RecipesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3D11423BE5E4500C68A8E /* RecipesListModel.swift */; };
+		FAA3D11723BE616700C68A8E /* SearchRecipesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3D11623BE616700C68A8E /* SearchRecipesResponse.swift */; };
 		FAE4CDFA23BBBD4000124223 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDF923BBBD4000124223 /* AppDelegate.swift */; };
 		FAE4CDFC23BBBD4000124223 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */; };
 		FAE4CDFE23BBBD4000124223 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDFD23BBBD4000124223 /* ViewController.swift */; };
@@ -25,6 +28,9 @@
 		68647166A68C05CF1EE06B18 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC279ACBE69F1B6D9C31C9C /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipesError.swift; sourceTree = "<group>"; };
+		FAA3D11023BD302C00C68A8E /* RecipesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewController.swift; sourceTree = "<group>"; };
+		FAA3D11423BE5E4500C68A8E /* RecipesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListModel.swift; sourceTree = "<group>"; };
+		FAA3D11623BE616700C68A8E /* SearchRecipesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipesResponse.swift; sourceTree = "<group>"; };
 		FAE4CDF623BBBD4000124223 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE4CDF923BBBD4000124223 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,8 +70,16 @@
 				CBC279ACBE69F1B6D9C31C9C /* Pods-Reciplease.debug.xcconfig */,
 				27AE7602EDDA6A239232AAA4 /* Pods-Reciplease.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FAA3D10B23BD2F6E00C68A8E /* RecipesList */ = {
+			isa = PBXGroup;
+			children = (
+				FAA3D11023BD302C00C68A8E /* RecipesListViewController.swift */,
+				FAA3D11423BE5E4500C68A8E /* RecipesListModel.swift */,
+			);
+			path = RecipesList;
 			sourceTree = "<group>";
 		};
 		FAE4CDED23BBBD4000124223 = {
@@ -89,6 +103,7 @@
 		FAE4CDF823BBBD4000124223 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
+				FAA3D10B23BD2F6E00C68A8E /* RecipesList */,
 				FAE4CE1023BBBF8400124223 /* Search */,
 				FAE4CDF923BBBD4000124223 /* AppDelegate.swift */,
 				FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */,
@@ -105,8 +120,9 @@
 		FAE4CE1023BBBF8400124223 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */,
 				FAE4CE1323BBCF6000124223 /* SearchModel.swift */,
+				FAA3D11623BE616700C68A8E /* SearchRecipesResponse.swift */,
+				FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */,
 				FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */,
 			);
 			path = Search;
@@ -227,6 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA3D11723BE616700C68A8E /* SearchRecipesResponse.swift in Sources */,
+				FAA3D11123BD302C00C68A8E /* RecipesListViewController.swift in Sources */,
+				FAA3D11523BE5E4500C68A8E /* RecipesListModel.swift in Sources */,
 				FAE4CE1223BBBFBA00124223 /* SearchViewController.swift in Sources */,
 				FAE4CE0423BBBD4000124223 /* Reciplease.xcdatamodeld in Sources */,
 				FAE4CDFE23BBBD4000124223 /* ViewController.swift in Sources */,

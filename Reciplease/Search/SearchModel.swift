@@ -49,7 +49,7 @@ class SearchModel {
 
             debugPrint(response)
             
-            //errors ?
+// TODO: Missing errors handling 
 //            response.error
                         
             guard let data = response.data,
@@ -60,8 +60,11 @@ class SearchModel {
                     return
             }
 
-            print(responseJSON)
-
+//            print(responseJSON)
+            // by using map, we create an array of recipe
+            let recipes = responseJSON.hits.map({ $0.recipe })
+            print(recipes)
+            then(.success(recipes))
         }
 //        var urlComponents = URLComponents()
 //        urlComponents.scheme = "https"
@@ -119,3 +122,4 @@ struct Recipe: Codable {
     let ingredientLines: [String]
     // temps de preparation et
 }
+
