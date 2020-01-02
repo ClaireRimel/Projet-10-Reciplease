@@ -184,6 +184,7 @@
                                             <outlet property="ingredientsLabel" destination="wWG-BL-jhW" id="JJ7-X3-swh"/>
                                             <outlet property="nameLabel" destination="G3k-xP-TIQ" id="13C-DB-LJd"/>
                                             <outlet property="recipeImage" destination="438-1N-1e4" id="psY-Eg-R5D"/>
+                                            <segue destination="q0T-fX-25t" kind="show" identifier="RecipeDetails" id="pIE-cb-Cve"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -209,7 +210,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7G-3y-o8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2498.5507246376815" y="-583.25892857142856"/>
+            <point key="canvasLocation" x="2481" y="-583"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Pf2-wO-29s">
+            <objects>
+                <viewController id="q0T-fX-25t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eSl-2j-dqe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ffg-sA-9up"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rg3-dZ-0N5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXp-n3-2u4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3432" y="-583"/>
         </scene>
         <!--Item-->
         <scene sceneID="SaR-Kj-Om0">
