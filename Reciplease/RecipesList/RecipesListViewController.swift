@@ -42,30 +42,9 @@ extension RecipesListViewController: UITableViewDataSource {
         }
         
         if let recipe = model?.getRecipe(indexPath: indexPath) {
-            cell.nameLabel.text = recipe.label
-            
-            if var ingredients = recipe.ingredientLines.first {
-                if recipe.ingredientLines.count > 1 {
-                    ingredients += ", " + recipe.ingredientLines[1] + "..."
-                }
-                cell.ingredientsLabel.text = ingredients
-            }
-                        
-            AF.request(recipe.image).responseData { (response) in
-                switch response.result {
-                case let .success(data):
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async() {
-                        cell.recipeImage.image = image
-                    }
-                    
-                case .failure(let error):
-                    print("error \(error.localizedDescription)")
-                }
-            }
+            cell.recipe = recipe
         }
         
-         
         return cell
     }
 }
