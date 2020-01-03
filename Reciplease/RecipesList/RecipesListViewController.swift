@@ -12,7 +12,6 @@ import Alamofire
 class RecipesListViewController: UIViewController {
     
     @IBOutlet var listTableView: UITableView!
-    
     var model: RecipesListModel?
 
     override func viewDidLoad() {
@@ -21,6 +20,25 @@ class RecipesListViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("RecipesListViewController")
         print(model)
+        
+    }
+    
+   func addGradientToView(view: UIImageView) {
+    //gradient layer
+    let gradientLayer = CAGradientLayer()
+              
+    //define color
+    gradientLayer.colors = [UIColor.clear.cgColor,    UIColor.black.cgColor, ]
+              
+    //define locations of colors as NSNumbers in range from 0.0 to 1.0
+    //if locations not provided the colors will spread evenly
+    gradientLayer.locations = [ 0.6, 1]
+              
+    //define frame
+    gradientLayer.frame = view.bounds
+              
+    //insert the gradient layer to the view layer
+    view.layer.insertSublayer(gradientLayer, at: 3)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,8 +74,8 @@ extension RecipesListViewController: UITableViewDataSource {
         
         if let recipe = model?.getRecipe(indexPath: indexPath) {
             cell.recipe = recipe
+            addGradientToView(view: cell.recipeImage)
         }
-        
         return cell
     }
 }
@@ -68,4 +86,5 @@ extension RecipesListViewController: UITableViewDelegate {
         return 150
     }
 }
+
 

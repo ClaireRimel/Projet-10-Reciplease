@@ -14,7 +14,9 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var ingredientsLabel: UILabel!
     @IBOutlet var recipeImage: UIImageView!
-
+    
+    let gradientLayer = CAGradientLayer()
+    
     var recipe: Recipe! {
         didSet {
             nameLabel.text = recipe.label
@@ -39,6 +41,7 @@ class RecipeTableViewCell: UITableViewCell {
                  }
              }
         }
+        
     }
     
 //    override func awakeFromNib() {

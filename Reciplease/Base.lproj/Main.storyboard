@@ -27,7 +27,7 @@
         <scene sceneID="gsX-jK-6ci">
             <objects>
                 <viewController id="6aU-8m-JId" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="PQ3-p0-pm0">
+                    <view key="view" contentMode="scaleToFill" id="PQ3-p0-pm0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -154,14 +154,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-BL-jhW">
-                                                    <rect key="frame" x="28" y="118" width="358" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="20" y="106.5" width="366" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-xP-TIQ">
-                                                    <rect key="frame" x="28" y="89" width="358" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="20" y="74.5" width="366" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -172,11 +172,11 @@
                                                 <constraint firstItem="438-1N-1e4" firstAttribute="top" secondItem="c63-MU-liD" secondAttribute="top" id="BXz-JK-FJL"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wWG-BL-jhW" secondAttribute="trailing" constant="8" id="MG8-if-eak"/>
                                                 <constraint firstAttribute="bottom" secondItem="438-1N-1e4" secondAttribute="bottom" id="Nd2-It-Y7s"/>
-                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" constant="8" id="XfV-qx-UUl"/>
+                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" id="XfV-qx-UUl"/>
                                                 <constraint firstItem="wWG-BL-jhW" firstAttribute="top" secondItem="G3k-xP-TIQ" secondAttribute="bottom" constant="8" id="dxE-HO-fok"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="G3k-xP-TIQ" secondAttribute="trailing" constant="8" id="fgz-KU-JHX"/>
-                                                <constraint firstItem="G3k-xP-TIQ" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" constant="8" id="i0e-Za-ldc"/>
-                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="bottom" secondItem="c63-MU-liD" secondAttribute="bottomMargin" constant="-8" id="jN9-ro-hkP"/>
+                                                <constraint firstItem="G3k-xP-TIQ" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" id="i0e-Za-ldc"/>
+                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="bottom" secondItem="c63-MU-liD" secondAttribute="bottomMargin" constant="-16" id="jN9-ro-hkP"/>
                                                 <constraint firstAttribute="trailing" secondItem="438-1N-1e4" secondAttribute="trailing" id="z8f-Tn-wLN"/>
                                             </constraints>
                                         </tableViewCellContentView>
