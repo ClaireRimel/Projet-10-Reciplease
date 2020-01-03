@@ -44,7 +44,7 @@ class RecipeDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIView.addGradient(to: recipeImage)
         // Do any additional setup after loading the view.
         print("RecipeDetailsViewController")
         print(model)
