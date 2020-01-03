@@ -8,18 +8,18 @@
 
 import Foundation
 
-//struct SearchRecipesResponse: Codable {
-//    let hits: [RecipeHits]
-//}
-//
-//struct RecipeHits: Codable {
-//    let recipe: Recipe
-//}
-//
-//struct Recipe: Codable {
-//    let label: String
-//    let image: String
-//    let url: String
-//    let ingredientLines: [String]
-//    // temps de preparation et
-//}
+struct SearchRecipesResponse: Codable {
+    let hits: [RecipeHits]
+}
+
+struct RecipeHits: Codable {
+    let recipe: Recipe
+}
+
+struct Recipe: Codable {
+    let label: String
+    let image: String
+    let url: String
+    var ingredientLines: [String]
+    // temps de preparation et
+}

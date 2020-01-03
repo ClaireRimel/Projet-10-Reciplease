@@ -15,4 +15,12 @@ class RecipeDetailsModel {
     init(recipe: Recipe) {
         self.recipe = recipe
     }
+    
+    func getDetails(indexPath: IndexPath) -> String {
+        return recipe.ingredientLines[indexPath.row]
+    }
+    
+    func recipeInstruction() -> Int {
+        return recipe.ingredientLines.count
+    }
 }
