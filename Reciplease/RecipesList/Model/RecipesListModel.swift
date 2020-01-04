@@ -16,7 +16,7 @@ final class RecipesListModel {
         self.recipes = recipes
     }
     
-    func getRecipe(indexPath: IndexPath) -> Recipe {
+    func getRecipe(for indexPath: IndexPath) -> Recipe {
         return recipes[indexPath.row]
     }
     

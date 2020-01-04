@@ -43,7 +43,7 @@ extension RecipesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let recipe = model?.getRecipe(indexPath: indexPath) {
+        if let recipe = model?.getRecipe(for: indexPath) {
             cell.recipe = recipe
         }
         return cell
