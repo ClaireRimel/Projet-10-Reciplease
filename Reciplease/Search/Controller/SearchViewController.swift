@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
         if let text = ingredientsTextField.text {
             model.add(ingredient: text)
         }
+        ingredientsTextField.resignFirstResponder()
     }
     
     @IBAction func removeIngredients() {
