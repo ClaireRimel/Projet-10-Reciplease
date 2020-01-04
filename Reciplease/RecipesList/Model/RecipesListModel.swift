@@ -6,9 +6,9 @@
 //  Copyright © 2020 Claire Sivadier. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-final class RecipesListModel {
+final class RecipesListModel: ImageDownloadable {
     
     let recipes: [Recipe]
     
@@ -23,4 +23,9 @@ final class RecipesListModel {
     func numberOfRecipes() -> Int {
            return recipes.count
        }
+    
+    func requestImage(for indexPath: IndexPath, then: @escaping (Result<UIImage, Error>) -> Void) {
+        let recipe = recipes[indexPath.row]
+        requestImage(url: recipe.image, then: then)
+    }
 }
