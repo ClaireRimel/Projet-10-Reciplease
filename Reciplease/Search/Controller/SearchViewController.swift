@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
     @IBOutlet var ingredientsTextField: UITextField!
     @IBOutlet var ingredientsTableView: UITableView!
     
@@ -20,13 +21,12 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func addIngredient() {
-        // optional binding
         if let text = ingredientsTextField.text {
-            model.addIngredient(text: text)
+            model.add(ingredient: text)
         }
     }
     
-    @IBAction func clearIngredients() {
+    @IBAction func removeIngredients() {
         model.removeIngredients()
     }
     
@@ -62,6 +62,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -71,17 +72,15 @@ extension SearchViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath)
-
         cell.textLabel?.text = "-   " + model.getIngredient(indexPath: indexPath)
         cell.textLabel?.textColor = .white
-
         return cell
     }
 }
 
 extension SearchViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }

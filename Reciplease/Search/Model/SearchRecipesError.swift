@@ -14,6 +14,7 @@ enum SearchRecipesError: Error, Equatable {
 }
 
 extension SearchRecipesError {
+    
     var message: String{
         switch self {
         case let .requestError(error):

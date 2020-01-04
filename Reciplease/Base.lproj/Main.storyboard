@@ -27,7 +27,7 @@
         <scene sceneID="gsX-jK-6ci">
             <objects>
                 <viewController id="6aU-8m-JId" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="PQ3-p0-pm0">
+                    <view key="view" contentMode="scaleToFill" id="PQ3-p0-pm0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -85,7 +85,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="clearIngredients" destination="6aU-8m-JId" eventType="touchUpInside" id="H6h-HN-tyt"/>
+                                                    <action selector="removeIngredients" destination="6aU-8m-JId" eventType="touchUpInside" id="H6h-HN-tyt"/>
                                                 </connections>
                                             </button>
                                         </subviews>

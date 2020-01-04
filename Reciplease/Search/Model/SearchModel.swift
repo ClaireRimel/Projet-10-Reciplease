@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-// Only class can comforn to this protocol
+// Only classes can conform to this protocol
 protocol SearchModelDelegate: class {
     
     func searchModelDidAddIngredient(_ searchModel: SearchModel)
@@ -18,32 +18,32 @@ protocol SearchModelDelegate: class {
 
 class SearchModel {
     
-    private var arrayIngredients: [String] = []
+    private var ingredients: [String] = []
     weak var delegate: SearchModelDelegate?
     
-    func addIngredient(text: String) {
-        arrayIngredients.append(text)
+    func add(ingredient: String) {
+        ingredients.append(ingredient)
         delegate?.searchModelDidAddIngredient(self)
     }
     
     func removeIngredients() {
-        arrayIngredients.removeAll()
+        ingredients.removeAll()
         delegate?.searchModelDidDeleteIngredients(self)
     }
     
     func numberOfIngredients() -> Int {
-        return arrayIngredients.count
+        return ingredients.count
     }
     
     func getIngredient(indexPath: IndexPath) -> String {
-        return arrayIngredients[indexPath.row]
+        return ingredients[indexPath.row]
     }
     
     func request(then: @escaping (Result<[Recipe], SearchRecipesError>) -> Void) {
         
-        let ingredients = arrayIngredients.joined(separator: " ")
+        let string = ingredients.joined(separator: " ")
         
-        let parameters = ["q": ingredients, "app_id": "a674e9c4", "app_key": "35f93780dbf6f834909870f2529a9871"]
+        let parameters = ["q": string, "app_id": "a674e9c4", "app_key": "35f93780dbf6f834909870f2529a9871"]
         
         AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
             
