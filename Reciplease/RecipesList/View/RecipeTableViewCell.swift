@@ -13,10 +13,8 @@ final class RecipeTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var ingredientsLabel: UILabel!
-    @IBOutlet var recipeImage: UIImageView!
-    
-    let gradientLayer = CAGradientLayer()
-    
+    @IBOutlet var recipeImageView: UIImageView!
+        
     var recipe: Recipe! {
         didSet {
             nameLabel.text = recipe.label
@@ -33,7 +31,7 @@ final class RecipeTableViewCell: UITableViewCell {
                  case let .success(data):
                      let image = UIImage(data: data)
                      DispatchQueue.main.async() {
-                        self.recipeImage.image = image
+                        self.recipeImageView.image = image
                      }
                      
                  case .failure(let error):
@@ -45,7 +43,7 @@ final class RecipeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        UIView.addGradient(to: recipeImage)
+        UIView.addGradient(to: recipeImageView)
     }
     
 }

@@ -207,7 +207,7 @@
                                         <connections>
                                             <outlet property="ingredientsLabel" destination="wWG-BL-jhW" id="JJ7-X3-swh"/>
                                             <outlet property="nameLabel" destination="G3k-xP-TIQ" id="13C-DB-LJd"/>
-                                            <outlet property="recipeImage" destination="438-1N-1e4" id="psY-Eg-R5D"/>
+                                            <outlet property="recipeImageView" destination="438-1N-1e4" id="psY-Eg-R5D"/>
                                             <segue destination="q0T-fX-25t" kind="show" identifier="RecipeDetails" id="pIE-cb-Cve"/>
                                         </connections>
                                     </tableViewCell>
