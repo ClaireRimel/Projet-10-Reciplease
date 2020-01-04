@@ -75,9 +75,11 @@ extension SearchViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath)
-        cell.textLabel?.text = "-   " + model.getIngredient(for: indexPath)
-        cell.textLabel?.textColor = .white
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientTableViewCell", for: indexPath) as? IngredientTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.ingredient = model.getIngredient(for: indexPath)
         return cell
     }
 }
