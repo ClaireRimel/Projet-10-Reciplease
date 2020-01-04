@@ -48,8 +48,12 @@ class SearchModel {
         AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
             
             debugPrint(response)
-            
-            // TODO: Missing errors handling
+            if let error = response.error {
+                DispatchQueue.main.async {
+                    then(.failure(.requestError(error as NSError)))
+                }
+                return
+            }
             
             guard let data = response.data,
                 let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
