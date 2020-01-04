@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RecipeDetailsModel {
+final class RecipeDetailsModel {
     
     let recipe: Recipe
     

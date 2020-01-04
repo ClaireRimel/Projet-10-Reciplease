@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SafariServices
 
-class RecipeDetailsViewController: UIViewController {
+final class RecipeDetailsViewController: UIViewController {
     
     @IBOutlet var recipeImage: UIImageView!
     @IBOutlet var recipeLabel: UILabel!
