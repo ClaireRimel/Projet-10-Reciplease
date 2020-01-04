@@ -60,7 +60,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.recipeDetails() ?? 0
+        return model?.numberOfIngredients() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +68,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeInstructionTableViewCell", for: indexPath)
         cell.textLabel?.textColor = .white
         
-        if let ingredient = model?.getDetails(indexPath: indexPath) {
+        if let ingredient = model?.getDetails(for: indexPath) {
             cell.textLabel?.text = ingredient
         }
         return cell

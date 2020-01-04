@@ -16,11 +16,11 @@ final class RecipeDetailsModel {
         self.recipe = recipe
     }
     
-    func getDetails(indexPath: IndexPath) -> String {
+    func getDetails(for indexPath: IndexPath) -> String {
         return recipe.ingredientLines[indexPath.row]
     }
     
-    func recipeDetails() -> Int {
+    func numberOfIngredients() -> Int {
         return recipe.ingredientLines.count
     }
 }
