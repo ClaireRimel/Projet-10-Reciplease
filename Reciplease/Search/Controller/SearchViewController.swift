@@ -14,11 +14,7 @@ final class SearchViewController: UIViewController {
     @IBOutlet var ingredientsTableView: UITableView!
     
     let model = SearchModel()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+        
     @IBAction func addIngredient() {
         if let text = ingredientsTextField.text {
             model.add(ingredient: text)

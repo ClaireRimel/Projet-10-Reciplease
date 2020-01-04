@@ -14,10 +14,6 @@ final class RecipesListViewController: UIViewController {
     @IBOutlet var listTableView: UITableView!
     var model: RecipesListModel?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
         if segue.identifier == "RecipeDetails" {
