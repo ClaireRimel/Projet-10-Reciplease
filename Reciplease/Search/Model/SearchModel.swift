@@ -35,11 +35,11 @@ class SearchModel {
         return ingredients.count
     }
     
-    func getIngredient(indexPath: IndexPath) -> String {
+    func getIngredient(for indexPath: IndexPath) -> String {
         return ingredients[indexPath.row]
     }
     
-    func request(then: @escaping (Result<[Recipe], SearchRecipesError>) -> Void) {
+    func searchRecipes(then: @escaping (Result<[Recipe], SearchRecipesError>) -> Void) {
         
         let string = ingredients.joined(separator: " ")
         

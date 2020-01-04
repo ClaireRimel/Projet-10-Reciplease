@@ -31,7 +31,7 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchRecipes() {
-        model.request { (result) in
+        model.searchRecipes { (result) in
             switch result {
             case let .success(recipes):
                 self.performSegue(withIdentifier: "RecipesList", sender: recipes)
@@ -73,7 +73,7 @@ extension SearchViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientTableViewCell", for: indexPath)
-        cell.textLabel?.text = "-   " + model.getIngredient(indexPath: indexPath)
+        cell.textLabel?.text = "-   " + model.getIngredient(for: indexPath)
         cell.textLabel?.textColor = .white
         return cell
     }
