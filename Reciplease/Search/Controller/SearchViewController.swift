@@ -17,7 +17,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.delegate = self
     }
     
     @IBAction func addIngredient() {
@@ -25,10 +24,13 @@ class SearchViewController: UIViewController {
             model.add(ingredient: text)
         }
         ingredientsTextField.resignFirstResponder()
+        ingredientsTextField.text = ""
+        ingredientsTableView.reloadData()
     }
     
     @IBAction func removeIngredients() {
         model.removeIngredients()
+        ingredientsTableView.reloadData()
     }
     
     @IBAction func searchRecipes() {
@@ -84,17 +86,5 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
-    }
-}
-
-extension SearchViewController: SearchModelDelegate {
-    
-    func searchModelDidAddIngredient(_ searchModel: SearchModel) {
-        ingredientsTextField.text = ""
-        ingredientsTableView.reloadData()
-    }
-    
-    func searchModelDidDeleteIngredients(_ searchModel: SearchModel) {
-        ingredientsTableView.reloadData()
     }
 }
