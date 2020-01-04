@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RecipeTableViewCell: UITableViewCell {
+final class RecipeTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var ingredientsLabel: UILabel!

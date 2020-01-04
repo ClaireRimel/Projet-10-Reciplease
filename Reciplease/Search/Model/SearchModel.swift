@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class SearchModel {
+final class SearchModel {
     
     private var ingredients: [String] = []
     

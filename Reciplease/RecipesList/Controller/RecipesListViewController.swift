@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RecipesListViewController: UIViewController {
+final class RecipesListViewController: UIViewController {
     
     @IBOutlet var listTableView: UITableView!
     var model: RecipesListModel?

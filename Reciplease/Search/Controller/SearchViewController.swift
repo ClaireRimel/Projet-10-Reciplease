@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     @IBOutlet var ingredientsTextField: UITextField!
     @IBOutlet var ingredientsTableView: UITableView!
