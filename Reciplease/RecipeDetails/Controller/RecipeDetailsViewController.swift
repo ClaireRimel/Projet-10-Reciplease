@@ -20,24 +20,22 @@ final class RecipeDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIView.addGradient(to: recipeImage)
         // Do any additional setup after loading the view.
+        UIView.addGradient(to: recipeImage)
+
         recipeLabel.text = model?.recipe.label
-        if let imageUrl = model?.recipe.image {
-            AF.request(imageUrl).responseData { (response) in
-                switch response.result {
-                case let .success(data):
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async() {
-                        self.recipeImage.image = image
-                    }
-                    
-                case .failure(let error):
-                    print("error \(error.localizedDescription)")
+        recipeTableView.reloadData()
+
+        model?.requestImage(then: { (result) in
+            DispatchQueue.main.async() {
+                switch result {
+                case let .success(image):
+                    self.recipeImage.image = image
+                case .failure:
+                    self.recipeImage.image = UIImage(named: "NoImageAvailable")
                 }
             }
-        }
-        recipeTableView.reloadData()
+        })
     }
     
     @IBAction func getDirectionButton() {
@@ -49,11 +47,12 @@ final class RecipeDetailsViewController: UIViewController {
             present(vc, animated: true)
         }
     }
+}
 
 extension RecipeDetailsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-           return 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +60,6 @@ extension RecipeDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeInstructionTableViewCell", for: indexPath)
         cell.textLabel?.textColor = .white
         

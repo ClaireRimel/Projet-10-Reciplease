@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class RecipeDetailsModel {
     
@@ -26,5 +27,24 @@ final class RecipeDetailsModel {
     
     func getURL() -> URL? {
         return URL(string: recipe.url)
+    }
+    
+    func requestImage(then: @escaping (Result<UIImage, Error>) -> Void) {
+        AF.request(recipe.image).responseData { (response) in
+            switch response.result {
+            case let .success(data):
+                guard let image = UIImage(data: data) else {
+                    let error = NSError(domain: "", code: 0, userInfo: nil)
+                    then(.failure(error))
+                    return
+                }
+                
+                then(.success(image))
+                
+            case .failure(let error):
+                print("error \(error.localizedDescription)")
+                then(.failure(error))
+            }
+        }
     }
 }
