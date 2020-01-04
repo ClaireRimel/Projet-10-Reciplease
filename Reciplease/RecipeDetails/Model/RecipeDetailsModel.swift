@@ -6,10 +6,9 @@
 //  Copyright © 2020 Claire Sivadier. All rights reserved.
 //
 
-import Foundation
-import Alamofire
+import UIKit
 
-final class RecipeDetailsModel {
+final class RecipeDetailsModel: ImageDownloadable {
     
     let recipe: Recipe
     
@@ -30,21 +29,6 @@ final class RecipeDetailsModel {
     }
     
     func requestImage(then: @escaping (Result<UIImage, Error>) -> Void) {
-        AF.request(recipe.image).responseData { (response) in
-            switch response.result {
-            case let .success(data):
-                guard let image = UIImage(data: data) else {
-                    let error = NSError(domain: "", code: 0, userInfo: nil)
-                    then(.failure(error))
-                    return
-                }
-                
-                then(.success(image))
-                
-            case .failure(let error):
-                print("error \(error.localizedDescription)")
-                then(.failure(error))
-            }
-        }
+        requestImage(url: recipe.image, then: then)
     }
 }
