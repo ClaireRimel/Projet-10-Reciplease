@@ -12,10 +12,10 @@ import Alamofire
 final class RecipesListViewController: UIViewController {
     
     @IBOutlet var listTableView: UITableView!
+    
     var model: RecipesListModel?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
         if segue.identifier == "RecipeDetails" {
             if let destination = segue.destination as? RecipeDetailsViewController,
                 let cell = sender as? RecipeTableViewCell {
@@ -30,7 +30,7 @@ final class RecipesListViewController: UIViewController {
 extension RecipesListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-           return 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,5 +56,3 @@ extension RecipesListViewController: UITableViewDelegate {
         return 150
     }
 }
-
-

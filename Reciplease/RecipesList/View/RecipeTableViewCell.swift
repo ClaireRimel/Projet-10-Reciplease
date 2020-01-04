@@ -45,5 +45,4 @@ final class RecipeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         UIView.addGradient(to: recipeImageView)
     }
-    
 }
