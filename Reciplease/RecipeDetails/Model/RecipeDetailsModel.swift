@@ -23,4 +23,8 @@ final class RecipeDetailsModel {
     func numberOfIngredients() -> Int {
         return recipe.ingredientLines.count
     }
+    
+    func getURL() -> URL? {
+        return URL(string: recipe.url)
+    }
 }

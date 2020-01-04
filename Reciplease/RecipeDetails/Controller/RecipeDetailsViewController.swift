@@ -41,15 +41,12 @@ final class RecipeDetailsViewController: UIViewController {
     }
     
     @IBAction func getDirectionButton() {
-        
-        if let recipeUrl = model?.recipe.url,
-            let url = URL(string: recipeUrl) {
-              let config = SFSafariViewController.Configuration()
-                config.entersReaderIfAvailable = true
-
-                let vc = SFSafariViewController(url: url, configuration: config)
-                present(vc, animated: true)
-            }
+        if let url = model?.getURL() {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
         }
     }
 

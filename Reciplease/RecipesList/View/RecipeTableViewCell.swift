@@ -25,7 +25,8 @@ final class RecipeTableViewCell: UITableViewCell {
                  }
                  ingredientsLabel.text = ingredients
              }
-                         
+                     
+            //TODO: #3 create delegate protocol to move image download request to model
              AF.request(recipe.image).responseData { (response) in
                  switch response.result {
                  case let .success(data):
