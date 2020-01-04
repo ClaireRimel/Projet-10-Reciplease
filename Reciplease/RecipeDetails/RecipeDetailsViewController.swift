@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SafariServices
 
 class RecipeDetailsViewController: UIViewController {
     
@@ -15,33 +16,8 @@ class RecipeDetailsViewController: UIViewController {
     @IBOutlet var recipeLabel: UILabel!
     @IBOutlet var recipeTableView: UITableView!
     
-    @IBAction func getDirectionButton() {}
-    
     var model: RecipeDetailsModel?
     
-//   var recipe: Recipe! {
-//             didSet {
-//                 recipeLabel.text = recipe.label
-//
-//                 var ingredients = recipe.ingredientLines
-//                      recipeTableView = ingredients
-//                  }
-//
-//                  AF.request(recipe.image).responseData { (response) in
-//                      switch response.result {
-//                      case let .success(data):
-//                          let image = UIImage(data: data)
-//                          DispatchQueue.main.async() {
-//                             self.recipeImage.image = image
-//                          }
-//
-//                      case .failure(let error):
-//                          print("error \(error.localizedDescription)")
-//                      }
-//                  }
-//             }
-//         }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         UIView.addGradient(to: recipeImage)
@@ -67,7 +43,19 @@ class RecipeDetailsViewController: UIViewController {
         
         recipeTableView.reloadData()
     }
-}
+    
+    @IBAction func getDirectionButton() {
+        
+        if let recipeUrl = model?.recipe.url,
+            let url = URL(string: recipeUrl) {
+              let config = SFSafariViewController.Configuration()
+                config.entersReaderIfAvailable = true
+
+                let vc = SFSafariViewController(url: url, configuration: config)
+                present(vc, animated: true)
+            }
+        }
+    }
 
 extension RecipeDetailsViewController: UITableViewDataSource {
     
