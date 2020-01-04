@@ -22,9 +22,6 @@ class RecipeDetailsViewController: UIViewController {
         super.viewDidLoad()
         UIView.addGradient(to: recipeImage)
         // Do any additional setup after loading the view.
-        print("RecipeDetailsViewController")
-        print(model)
-        
         recipeLabel.text = model?.recipe.label
         if let imageUrl = model?.recipe.image {
             AF.request(imageUrl).responseData { (response) in
@@ -40,7 +37,6 @@ class RecipeDetailsViewController: UIViewController {
                 }
             }
         }
-        
         recipeTableView.reloadData()
     }
     
@@ -64,7 +60,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.recipeInstruction() ?? 0
+        return model?.recipeDetails() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

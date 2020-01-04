@@ -46,11 +46,11 @@ class SearchModel {
         let parameters = ["q": ingredients, "app_id": "a674e9c4", "app_key": "35f93780dbf6f834909870f2529a9871"]
         
         AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
-
+            
             debugPrint(response)
             
-// TODO: Missing errors handling 
-                        
+            // TODO: Missing errors handling
+            
             guard let data = response.data,
                 let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
                     DispatchQueue.main.async {

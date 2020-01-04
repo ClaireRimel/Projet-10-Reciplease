@@ -20,7 +20,7 @@ class RecipeDetailsModel {
         return recipe.ingredientLines[indexPath.row]
     }
     
-    func recipeInstruction() -> Int {
+    func recipeDetails() -> Int {
         return recipe.ingredientLines.count
     }
 }

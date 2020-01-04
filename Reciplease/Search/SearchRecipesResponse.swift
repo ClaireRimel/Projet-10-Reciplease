@@ -21,5 +21,5 @@ struct Recipe: Codable {
     let image: String
     let url: String
     var ingredientLines: [String]
-    // temps de preparation et
+    // temps de preparation et Note
 }

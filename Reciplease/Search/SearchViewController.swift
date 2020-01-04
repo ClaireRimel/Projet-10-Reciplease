@@ -19,7 +19,6 @@ class SearchViewController: UIViewController {
         model.delegate = self
     }
     
-    
     @IBAction func addIngredient() {
         // optional binding
         if let text = ingredientsTextField.text {
@@ -61,8 +60,6 @@ class SearchViewController: UIViewController {
         }
     }
 }
-
-
 
 extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -16,17 +16,10 @@ class RecipesListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        print("RecipesListViewController")
-        print(model)
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        
+       
         if segue.identifier == "RecipeDetails" {
             if let destination = segue.destination as? RecipeDetailsViewController,
                 let cell = sender as? RecipeTableViewCell {
