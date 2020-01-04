@@ -81,12 +81,84 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FAA3D10B23BD2F6E00C68A8E /* RecipesList */ = {
+		FA7A682323C0D245008C2CF8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAA3D11D23BE97AC00C68A8E /* RecipeDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA7A682423C0D258008C2CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA7A682523C0D263008C2CF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAA3D11F23BE981900C68A8E /* RecipeDetailsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA7A682623C0D272008C2CF8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				FAA3D11023BD302C00C68A8E /* RecipesListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA7A682723C0D319008C2CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				FAA3D11823BE7F5B00C68A8E /* RecipeTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA7A682823C0D321008C2CF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				FAA3D11423BE5E4500C68A8E /* RecipesListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA7A682923C0D354008C2CF8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA7A682A23C0D360008C2CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA7A682B23C0D366008C2CF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4CE1323BBCF6000124223 /* SearchModel.swift */,
+				FAA3D11623BE616700C68A8E /* SearchRecipesResponse.swift */,
+				FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FAA3D10B23BD2F6E00C68A8E /* RecipesList */ = {
+			isa = PBXGroup;
+			children = (
+				FA7A682823C0D321008C2CF8 /* Model */,
+				FA7A682723C0D319008C2CF8 /* View */,
+				FA7A682623C0D272008C2CF8 /* Controller */,
 			);
 			path = RecipesList;
 			sourceTree = "<group>";
@@ -94,8 +166,9 @@
 		FAA3D11A23BE955400C68A8E /* RecipeDetails */ = {
 			isa = PBXGroup;
 			children = (
-				FAA3D11D23BE97AC00C68A8E /* RecipeDetailsViewController.swift */,
-				FAA3D11F23BE981900C68A8E /* RecipeDetailsModel.swift */,
+				FA7A682523C0D263008C2CF8 /* Model */,
+				FA7A682423C0D258008C2CF8 /* View */,
+				FA7A682323C0D245008C2CF8 /* Controller */,
 			);
 			path = RecipeDetails;
 			sourceTree = "<group>";
@@ -140,10 +213,9 @@
 		FAE4CE1023BBBF8400124223 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				FAE4CE1323BBCF6000124223 /* SearchModel.swift */,
-				FAA3D11623BE616700C68A8E /* SearchRecipesResponse.swift */,
-				FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */,
-				FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */,
+				FA7A682B23C0D366008C2CF8 /* Model */,
+				FA7A682A23C0D360008C2CF8 /* View */,
+				FA7A682923C0D354008C2CF8 /* Controller */,
 			);
 			path = Search;
 			sourceTree = "<group>";
