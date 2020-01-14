@@ -9,12 +9,14 @@
 import UIKit
 import Alamofire
 import SafariServices
+import CoreData
 
 final class RecipeDetailsViewController: UIViewController {
     
     @IBOutlet var recipeImage: UIImageView!
     @IBOutlet var recipeLabel: UILabel!
     @IBOutlet var recipeTableView: UITableView!
+    @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
     
     var model: RecipeDetailsModel?
     
@@ -47,6 +49,50 @@ final class RecipeDetailsViewController: UIViewController {
             present(vc, animated: true)
         }
     }
+    
+    @IBAction func didPressFavorite() {
+        
+    }
+    
+//    func save(name:String)
+//    {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//
+//        //Data is in this case the name of the entity
+//        let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity",
+//                                                in: context)
+//        var newValue = NSManagedObject(entity: entity!,
+//                                      insertInto:context)
+
+//        newValue.setValue(model!.recipe.label, forKey: "label")
+//        newValue.setValue(model!.recipe.image, forKey: "image")
+//        newValue.setValue(model!.recipe.url, forKey: "url")
+//        newValue.setValue(model!.recipe.ingredientLines, forKey: "ingredientLines")
+//
+//       do {
+//           try context.save()
+//          } catch {
+//           print("Failed saving")
+//        }
+        
+//        let managedContext =
+//            appDelegate.persistentContainer.viewContext
+//
+//        let fetchRequest =
+//            NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
+        
+        //3
+//        do {
+//            newValue = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//
+        
+        //uncomment this line for adding the stored object to the core data array
+        //name_list.append(options)
+//    }
 }
 
 extension RecipeDetailsViewController: UITableViewDataSource {
