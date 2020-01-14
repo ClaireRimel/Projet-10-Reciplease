@@ -11,7 +11,13 @@ import Alamofire
 
 final class SearchModel {
     
-    private var ingredients: [String] = []
+     private var ingredients: [String] = []
+    
+    let networkService: NetworkServiceInterface = NetworkService()
+    
+//    init(networkService: NetworkServiceInterface = NetworkService()) {
+//        self.networkService = networkService
+//    }
     
     func add(ingredient: String) {
         ingredients.append(ingredient)
@@ -36,28 +42,88 @@ final class SearchModel {
         let parameters = ["q": string,
                           "app_id": "a674e9c4",
                           "app_key": "35f93780dbf6f834909870f2529a9871"]
-        
-        AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
-            
-            debugPrint(response)
-            if let error = response.error {
-                DispatchQueue.main.async {
-                    then(.failure(.requestError(error as NSError)))
-                }
-                return
-            }
-            
-            guard let data = response.data,
-                let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
+        //new code..
+        networkService.request(parameters: parameters) { (result) in
+            switch result {
+            case let.success(data):
+                guard let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
                     DispatchQueue.main.async {
                         then(.failure(.invalidResponseFormat))
                     }
                     return
+                }
+                // by using map, we create an array of recipe
+                let recipes = responseJSON.hits.map({ $0.recipe })
+                print(recipes)
+                then(.success(recipes))
+                
+            case let .failure(error):
+                DispatchQueue.main.async {
+                    then(.failure(.requestError(error as NSError)))
+                }
             }
-            // by using map, we create an array of recipe
-            let recipes = responseJSON.hits.map({ $0.recipe })
-            print(recipes)
-            then(.success(recipes))
         }
+        
+        
+        
+        //old code...
+//        AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
+//
+//            debugPrint(response)
+//            if let error = response.error {
+//                DispatchQueue.main.async {
+//                    then(.failure(.requestError(error as NSError)))
+//                }
+//                return
+//            }
+//
+//            guard let data = response.data,
+//                let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
+//                    DispatchQueue.main.async {
+//                        then(.failure(.invalidResponseFormat))
+//                    }
+//                    return
+//            }
+//            // by using map, we create an array of recipe
+//            let recipes = responseJSON.hits.map({ $0.recipe })
+//            print(recipes)
+//            then(.success(recipes))
+//        }
+    }
+}
+
+protocol NetworkServiceInterface {
+    
+    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void)
+}
+
+final class NetworkService: NetworkServiceInterface {
+        
+    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
+        AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
+            
+            if let error = response.error {
+                then(.failure(error))
+                return
+            }
+            
+            if let data = response.data {
+                then(.success(data))
+            }
+        }
+    }
+}
+
+//unit test target
+
+final class NetworkServiceMock: NetworkServiceInterface {
+    
+    var parameters: [String : String] = [:]
+    
+    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
+        //...
+        self.parameters = parameters
+        
+        then(.success(Data()))
     }
 }
