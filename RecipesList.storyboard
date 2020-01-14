@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reciplease-->
+        <scene sceneID="aOL-K6-4CE">
+            <objects>
+                <viewController storyboardIdentifier="UIViewController-AAc-7C-Rwt" id="AAc-7C-Rwt" customClass="RecipesListViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z5H-L3-cHx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pF5-jm-rWN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableViewCell" rowHeight="154" id="1Gq-iC-3JJ" customClass="RecipeTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="154"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Gq-iC-3JJ" id="c63-MU-liD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="438-1N-1e4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-BL-jhW">
+                                                    <rect key="frame" x="20" y="106.5" width="366" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-xP-TIQ">
+                                                    <rect key="frame" x="20" y="74.5" width="366" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="438-1N-1e4" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leading" id="0PG-eF-65S"/>
+                                                <constraint firstItem="438-1N-1e4" firstAttribute="top" secondItem="c63-MU-liD" secondAttribute="top" id="BXz-JK-FJL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wWG-BL-jhW" secondAttribute="trailing" constant="8" id="MG8-if-eak"/>
+                                                <constraint firstAttribute="bottom" secondItem="438-1N-1e4" secondAttribute="bottom" id="Nd2-It-Y7s"/>
+                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" id="XfV-qx-UUl"/>
+                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="top" secondItem="G3k-xP-TIQ" secondAttribute="bottom" constant="8" id="dxE-HO-fok"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="G3k-xP-TIQ" secondAttribute="trailing" constant="8" id="fgz-KU-JHX"/>
+                                                <constraint firstItem="G3k-xP-TIQ" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" id="i0e-Za-ldc"/>
+                                                <constraint firstItem="wWG-BL-jhW" firstAttribute="bottom" secondItem="c63-MU-liD" secondAttribute="bottomMargin" constant="-16" id="jN9-ro-hkP"/>
+                                                <constraint firstAttribute="trailing" secondItem="438-1N-1e4" secondAttribute="trailing" id="z8f-Tn-wLN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ingredientsLabel" destination="wWG-BL-jhW" id="JJ7-X3-swh"/>
+                                            <outlet property="nameLabel" destination="G3k-xP-TIQ" id="13C-DB-LJd"/>
+                                            <outlet property="recipeImageView" destination="438-1N-1e4" id="psY-Eg-R5D"/>
+                                            <segue destination="aGh-HO-vLf" kind="show" identifier="RecipeDetails" id="pIE-cb-Cve"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AAc-7C-Rwt" id="7Lx-T7-kTu"/>
+                                    <outlet property="delegate" destination="AAc-7C-Rwt" id="bo9-DT-kLe"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="pF5-jm-rWN" firstAttribute="bottom" secondItem="3ST-bS-XyK" secondAttribute="bottom" id="LZm-bi-nEH"/>
+                            <constraint firstItem="pF5-jm-rWN" firstAttribute="top" secondItem="3ST-bS-XyK" secondAttribute="top" id="iWm-OJ-EdY"/>
+                            <constraint firstItem="pF5-jm-rWN" firstAttribute="leading" secondItem="3ST-bS-XyK" secondAttribute="leading" id="kfZ-gC-63x"/>
+                            <constraint firstItem="pF5-jm-rWN" firstAttribute="trailing" secondItem="3ST-bS-XyK" secondAttribute="trailing" id="lB1-XK-TEj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3ST-bS-XyK"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reciplease" id="bkM-qR-Onl">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="TkG-nz-FqM">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listTableView" destination="pF5-jm-rWN" id="dqg-TO-Boi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F7G-3y-o8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2481" y="-583"/>
+        </scene>
+        <!--UIViewController-q0T-fX-25t-->
+        <scene sceneID="EYI-93-nYt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UIViewController-q0T-fX-25t" id="aGh-HO-vLf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nZK-R5-H46" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3431.884057971015" y="-583.25892857142856"/>
+        </scene>
+    </scenes>
+</document>
