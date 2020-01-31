@@ -23,11 +23,18 @@ final class RecipeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if model?.checkFavStatus() == true {
+            favoriteBarButtonItem.image = UIImage(systemName: "star.fill")
+        } else {
+            favoriteBarButtonItem.image = UIImage(systemName: "star")
+        }
+        
         UIView.addGradient(to: recipeImage)
-
+        
         recipeLabel.text = model?.recipe.label
         recipeTableView.reloadData()
-
+        
         model?.requestImage(then: { (result) in
             DispatchQueue.main.async() {
                 switch result {
@@ -51,48 +58,15 @@ final class RecipeDetailsViewController: UIViewController {
     }
     
     @IBAction func didPressFavorite() {
-        
+        if model?.checkFavStatus() == false {
+            model?.addToFavorite()
+            favoriteBarButtonItem.image = UIImage(systemName: "star.fill")
+            
+        } else {
+            favoriteBarButtonItem.image = UIImage(systemName: "star")
+            model?.delete()
+        }
     }
-    
-//    func save(name:String)
-//    {
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//        //Data is in this case the name of the entity
-//        let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity",
-//                                                in: context)
-//        var newValue = NSManagedObject(entity: entity!,
-//                                      insertInto:context)
-
-//        newValue.setValue(model!.recipe.label, forKey: "label")
-//        newValue.setValue(model!.recipe.image, forKey: "image")
-//        newValue.setValue(model!.recipe.url, forKey: "url")
-//        newValue.setValue(model!.recipe.ingredientLines, forKey: "ingredientLines")
-//
-//       do {
-//           try context.save()
-//          } catch {
-//           print("Failed saving")
-//        }
-        
-//        let managedContext =
-//            appDelegate.persistentContainer.viewContext
-//
-//        let fetchRequest =
-//            NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
-        
-        //3
-//        do {
-//            newValue = try managedContext.fetch(fetchRequest)
-//        } catch let error as NSError {
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
-//
-        
-        //uncomment this line for adding the stored object to the core data array
-        //name_list.append(options)
-//    }
 }
 
 extension RecipeDetailsViewController: UITableViewDataSource {
