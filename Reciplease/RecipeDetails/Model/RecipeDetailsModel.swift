@@ -17,11 +17,7 @@ final class RecipeDetailsModel: ImageDownloadable {
     init(recipe: Recipe) {
         self.recipe = recipe
     }
-    
-//    let favoriteRecipe = favorites.map{({ (url) -> String in
-//        return
-//    })}
-//
+
     func getDetails(for indexPath: IndexPath) -> String {
         return recipe.ingredientLines[indexPath.row]
     }
@@ -45,13 +41,14 @@ final class RecipeDetailsModel: ImageDownloadable {
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
-        
         let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext)!
-        
         let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
+        let ingredientLinesData = try! NSKeyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
+                                                                    requiringSecureCoding: true)
+      
         
         recipeEntity.setValue(recipe.image, forKey: "image")
-        //Todo: [ingredients]
+        recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
         recipeEntity.setValue(recipe.label, forKey: "label")
         recipeEntity.setValue(recipe.url, forKey: "url")
         
@@ -65,6 +62,11 @@ final class RecipeDetailsModel: ImageDownloadable {
         print("RECIPES Has been added ")
     }
     
+    func recoveredIngredientLines(object: NSManagedObject) -> [String] {
+        let ingredientsLines = object.value(forKey: "ingredientLines") as? Data
+        return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(ingredientsLines!) as! [String]
+    }
+    
     func fetchRecipes() {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -72,19 +74,20 @@ final class RecipeDetailsModel: ImageDownloadable {
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
+        //        let recoveredArray = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [String]
+
         
         do {
             let result = try managedContext.fetch(fetchRequest)
             print("Fetch Result")
             print(result)
             let recipes = result.map {
+                
                 Recipe(label: $0.value(forKey: "label") as? String ?? "",
                        image: $0.value(forKey: "image") as? String ?? "",
                        url: $0.value(forKey: "url") as? String ?? "",
-                       //                       ingredientLines: $0.value(forKey: "ingredientLines"))
-                    ingredientLines: [])
+                       ingredientLines: recoveredIngredientLines(object: $0))
             }
             
             print("Fetch Result - RECIPES")

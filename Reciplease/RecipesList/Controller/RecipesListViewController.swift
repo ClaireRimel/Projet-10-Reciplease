@@ -45,17 +45,7 @@ extension RecipesListViewController: UITableViewDataSource {
         
         if let recipe = model?.getRecipe(for: indexPath) {
             cell.recipe = recipe
-        }
-//        // capture list
-//        model?.requestImage(for: indexPath, then: { [cell] (result) in
-//            switch result {
-//            case let .success(image):
-//                cell.recipeImageView.image = image
-//            case .failure:
-//                cell.recipeImageView.image = UIImage(named: "NoImageAvailable")
-//            }
-//        })
-        
+        }        
         return cell
     }
 }
