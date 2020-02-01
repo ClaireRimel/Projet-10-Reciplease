@@ -24,6 +24,16 @@ final class RecipesListViewController: UIViewController {
             }
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        model.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        model.viewWillAppear()
+    }
 }
 
 
@@ -46,7 +56,7 @@ extension RecipesListViewController: UITableViewDataSource {
         let recipe = model.getRecipe(for: indexPath)
         cell.recipe = recipe
         return cell
-    }
+    } 
 }
 
 extension RecipesListViewController: UITableViewDelegate {
@@ -68,5 +78,12 @@ extension RecipesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+}
+
+extension RecipesListViewController: RecipesListModelDelegate {
+    
+    func reloadData() {
+        listTableView.reloadData()
     }
 }
