@@ -14,7 +14,7 @@ final class RecipeTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var ingredientsLabel: UILabel!
     @IBOutlet var recipeImageView: UIImageView!
-    
+    // if favoriterecipe = var recipe: NSManagedObject else var recipe: Recipe
     var recipe: Recipe! {
         didSet {
             recipeImageView.image = nil
