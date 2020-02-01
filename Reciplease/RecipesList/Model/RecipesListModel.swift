@@ -9,11 +9,20 @@
 import UIKit
 
 final class RecipesListModel: ImageDownloadable {
+    //name space
+    enum Source {
+        case search([Recipe])
+        case favorite
+    }
     
-    let recipes: [Recipe]
+    var recipes: [Recipe] = []
+    let source: Source
     
-    init(recipes: [Recipe]) {
-        self.recipes = recipes
+    init(source: Source) {
+        self.source = source
+        if case let .search(recipes) = source {
+            self.recipes = recipes
+        }
     }
     
     func getRecipe(for indexPath: IndexPath) -> Recipe {

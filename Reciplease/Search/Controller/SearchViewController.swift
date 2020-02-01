@@ -49,7 +49,7 @@ final class SearchViewController: UIViewController {
         if segue.identifier == "RecipesList" {
             if let destination = segue.destination as? RecipesListViewController,
                 let recipes = sender as? [Recipe] {
-                let model = RecipesListModel(recipes: recipes)
+                let model = RecipesListModel(source: .search(recipes))
                 destination.model = model
             }
         }

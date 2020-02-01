@@ -13,7 +13,7 @@ final class RecipesListViewController: UIViewController {
     
     @IBOutlet var listTableView: UITableView!
     
-    var model: RecipesListModel?
+    var model: RecipesListModel = RecipesListModel(source: .favorite)
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeDetails" {
@@ -34,7 +34,7 @@ extension RecipesListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.numberOfRecipes() ?? 0
+        return model.numberOfRecipes()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,9 +43,8 @@ extension RecipesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let recipe = model?.getRecipe(for: indexPath) {
-            cell.recipe = recipe
-        }        
+        let recipe = model.getRecipe(for: indexPath)
+        cell.recipe = recipe
         return cell
     }
 }
@@ -55,7 +54,7 @@ extension RecipesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
         // capture list
-        model?.requestImage(for: indexPath, then: { (result) in
+        model.requestImage(for: indexPath, then: { (result) in
             if let cell = tableView.cellForRow(at: indexPath) as? RecipeTableViewCell {
                 switch result {
                 case let .success(image):
