@@ -1,56 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ht1-4G-Krh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ht1-4G-Krh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Favorite-->
         <scene sceneID="p38-jk-JNV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6tE-t4-ryY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="atb-MS-0q8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorite" image="star.fill" catalog="system" selectedImage="star.fill" id="60N-2f-uqU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mYK-vM-pQu">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="5tD-lZ-EQe" kind="relationship" relationship="rootViewController" id="67v-ve-m08"/>
+                        <segue destination="7ud-7e-7NH" kind="relationship" relationship="rootViewController" id="2R6-oH-WJu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tE-t4-ryY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="686" y="120"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="xaR-hl-MRx">
-            <objects>
-                <viewController id="5tD-lZ-EQe" customClass="FavoriteViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Rz-YM-8EP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="klh-jH-ycL">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="klh-jH-ycL" id="3zm-AZ-omb">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5tD-lZ-EQe" id="fmB-hn-ogg"/>
-                            <outlet property="delegate" destination="5tD-lZ-EQe" id="lht-Bf-mfq"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="kgt-pg-LNO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MKv-5V-459" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1600" y="120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SaR-Kj-Om0">
@@ -103,10 +77,12 @@
             </objects>
             <point key="canvasLocation" x="1520" y="-583"/>
         </scene>
-        <!--UIViewController-AAc-7C-Rwt-->
+        <!--RecipesListViewController-->
         <scene sceneID="vws-6V-GcQ">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UIViewController-AAc-7C-Rwt" storyboardName="RecipesList" referencedIdentifier="UIViewController-AAc-7C-Rwt" id="7ud-7e-7NH" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="RecipesListViewController" storyboardName="RecipesList" referencedIdentifier="RecipesListViewController" id="7ud-7e-7NH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uf0-3T-7v8"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cH2-6C-fcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2045" y="-583"/>
