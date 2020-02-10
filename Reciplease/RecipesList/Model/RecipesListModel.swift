@@ -37,8 +37,7 @@ final class RecipesListModel: ImageDownloadable {
             self.recipes = recipes
             self.delegate?.reloadData()
         case let .failure(error):
-            // TODO: Handle error
-            break
+            self.delegate?.show(error)
         }
     }
         
@@ -65,4 +64,6 @@ final class RecipesListModel: ImageDownloadable {
 
 protocol RecipesListModelDelegate: class {
     func reloadData()
+    
+    func show(_ error: Error)
 }

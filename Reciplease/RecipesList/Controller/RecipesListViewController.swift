@@ -14,7 +14,7 @@ final class RecipesListViewController: UIViewController {
     @IBOutlet var listTableView: UITableView!
     
     var model = RecipesListModel(source: .favorite)
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeDetails" {
             if let destination = segue.destination as? RecipeDetailsViewController,
@@ -48,7 +48,7 @@ extension RecipesListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableViewCell", for: indexPath) as? RecipeTableViewCell else {
             return UITableViewCell()
         }
@@ -62,7 +62,7 @@ extension RecipesListViewController: UITableViewDataSource {
 extension RecipesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
+        
         // capture list
         model.requestImage(for: indexPath, then: { (result) in
             if let cell = tableView.cellForRow(at: indexPath) as? RecipeTableViewCell {
@@ -82,6 +82,12 @@ extension RecipesListViewController: UITableViewDelegate {
 }
 
 extension RecipesListViewController: RecipesListModelDelegate {
+    
+    func show(_ error: Error) {
+        let alertVC = UIAlertController(title: "Erreur", message: error.localizedDescription, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
     
     func reloadData() {
         listTableView.reloadData()
