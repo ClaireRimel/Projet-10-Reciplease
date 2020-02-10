@@ -17,8 +17,7 @@ final class RecipeDetailsModel: ImageDownloadable {
     init(recipe: Recipe) {
         self.recipe = recipe
     }
-   
-
+    
     func getDetails(for indexPath: IndexPath) -> String {
         return recipe.ingredientLines[indexPath.row]
     }
@@ -36,7 +35,6 @@ final class RecipeDetailsModel: ImageDownloadable {
     }
     
     func addToFavorite() {
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -46,7 +44,6 @@ final class RecipeDetailsModel: ImageDownloadable {
         let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
         let ingredientLinesData = try! NSKeyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
                                                                     requiringSecureCoding: true)
-      
         
         recipeEntity.setValue(recipe.image, forKey: "image")
         recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
@@ -63,37 +60,6 @@ final class RecipeDetailsModel: ImageDownloadable {
         print("RECIPES Has been added ")
     }
     
-    
-    
-//    func fetchRecipes() {
-//        
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//        
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
-//            
-//        do {
-//            let result = try managedContext.fetch(fetchRequest)
-//            print("Fetch Result")
-//            print(result)
-//            let recipes = result.map {
-//                
-//                Recipe(label: $0.value(forKey: "label") as? String ?? "",
-//                       image: $0.value(forKey: "image") as? String ?? "",
-//                       url: $0.value(forKey: "url") as? String ?? "",
-//                       ingredientLines: recoveredIngredientLines(object: $0))
-//            }
-//            
-//            print("Fetch Result - RECIPES")
-//            print(recipes)
-//            
-//        } catch let error as NSError {
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
-//    }
-//    
     func delete() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -132,12 +98,8 @@ final class RecipeDetailsModel: ImageDownloadable {
         
         do {
             let result = try managedContext.fetch(fetchRequest)
+            return result.count == 1
             
-            if result.count == 1 {
-                return true
-            } else {
-                return false
-            }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return false
