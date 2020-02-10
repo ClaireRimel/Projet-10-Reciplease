@@ -18,6 +18,7 @@ final class RecipesListModel: ImageDownloadable {
     
     var recipes: [Recipe] = []
     let source: Source
+    let coreDataService = CoreDataService()
     weak var delegate: RecipesListModelDelegate?
     
     init(source: Source) {
@@ -26,46 +27,21 @@ final class RecipesListModel: ImageDownloadable {
         case let .search(recipes):
             self.recipes = recipes
         case .favorite:
-            self.recipes = fetchRecipes()
+            self.fetchRecipes()
         }
     }
-    
-    func recoveredIngredientLines(object: NSManagedObject) -> [String] {
-        let ingredientsLines = object.value(forKey: "ingredientLines") as? Data
-        return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(ingredientsLines!) as! [String]
-    }
-    
-    func fetchRecipes() -> [Recipe] {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return []
+
+    func fetchRecipes() {
+        switch coreDataService.fetchRecipes() {
+        case let .success(recipes):
+            self.recipes = recipes
+            self.delegate?.reloadData()
+        case let .failure(error):
+            // TODO: Handle error
+            break
         }
+    }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
-            
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            print("Fetch Result")
-            print(result)
-            let recipes = result.map {
-                
-                Recipe(label: $0.value(forKey: "label") as? String ?? "",
-                       image: $0.value(forKey: "image") as? String ?? "",
-                       url: $0.value(forKey: "url") as? String ?? "",
-                       ingredientLines: recoveredIngredientLines(object: $0))
-            }
-            
-            print("Fetch Result - RECIPES")
-            print(recipes)
-            return recipes
-            
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return []
-        }
-    }
-    
-    
     func getRecipe(for indexPath: IndexPath) -> Recipe {
         return recipes[indexPath.row]
     }
@@ -82,8 +58,7 @@ final class RecipesListModel: ImageDownloadable {
     func viewWillAppear() {
         // pattern matching
         if case .favorite = source{
-            self.recipes = fetchRecipes()
-            delegate?.reloadData()
+            fetchRecipes()
         }
     }
 }

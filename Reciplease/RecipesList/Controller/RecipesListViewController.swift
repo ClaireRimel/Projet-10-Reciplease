@@ -13,7 +13,7 @@ final class RecipesListViewController: UIViewController {
     
     @IBOutlet var listTableView: UITableView!
     
-    var model: RecipesListModel = RecipesListModel(source: .favorite)
+    var model = RecipesListModel(source: .favorite)
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipeDetails" {
