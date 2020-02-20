@@ -79,4 +79,51 @@ extension CoreDataService {
         }
         print("RECIPES Has been added ")
     }
+    
+    func delete(recipe: Recipe) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Missing AppDelegate reference")
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
+        fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            print("Fetch Result")
+            print(result)
+            
+            if let objectToDelete = result.first {
+                managedContext.delete(objectToDelete)
+                try managedContext.save()
+            }
+            print("Has been deleted RECIPES")
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func checkFavStatus(recipe: Recipe) -> Result<Bool, Error> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Missing AppDelegate reference")
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
+        fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            return .success(result.count == 1)
+            
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return .failure(error)
+        }
+    }
 }

@@ -46,47 +46,15 @@ final class RecipeDetailsModel: ImageDownloadable {
     }
     
     func delete() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
-        fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            print("Fetch Result")
-            print(result)
-            
-            if let objectToDelete = result.first {
-                managedContext.delete(objectToDelete)
-                try managedContext.save()
-            }
-            print("Has been deleted RECIPES")
-            
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        coreDataService.delete(recipe: recipe)
     }
     
     func checkFavStatus() -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return false
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
-        fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            return result.count == 1
-            
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        switch coreDataService.checkFavStatus(recipe: recipe) {
+        case let .success(isFavorite):
+            return isFavorite
+        case let .failure(error):
+            delegate?.show(error)
             return false
         }
     }
