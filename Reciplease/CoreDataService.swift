@@ -49,3 +49,34 @@ extension CoreDataService: FavoriteFetchableProtocol {
         }
     }
 }
+
+extension CoreDataService {
+    
+    func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Missing AppDelegate reference")
+            
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext)!
+        let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
+        let ingredientLinesData = try! NSKeyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
+                                                                    requiringSecureCoding: true)
+        
+        recipeEntity.setValue(recipe.image, forKey: "image")
+        recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
+        recipeEntity.setValue(recipe.label, forKey: "label")
+        recipeEntity.setValue(recipe.url, forKey: "url")
+        
+        
+        do {
+            try managedContext.save()
+            return .success(recipeEntity)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+            return .failure(error)
+        }
+        print("RECIPES Has been added ")
+    }
+}

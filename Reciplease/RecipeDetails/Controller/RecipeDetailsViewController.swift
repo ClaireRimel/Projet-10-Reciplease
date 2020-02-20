@@ -23,6 +23,7 @@ final class RecipeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        model?.delegate = self
         
         if model?.checkFavStatus() == true {
             favoriteBarButtonItem.image = UIImage(systemName: "star.fill")
@@ -95,4 +96,8 @@ extension RecipeDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+}
+
+extension RecipeDetailsViewController: ErrorMessageDisplayable {
+    
 }

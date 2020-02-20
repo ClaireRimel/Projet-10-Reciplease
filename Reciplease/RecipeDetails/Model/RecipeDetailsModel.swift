@@ -13,6 +13,8 @@ final class RecipeDetailsModel: ImageDownloadable {
     
     let recipe: Recipe
     var favorites: [NSManagedObject] = []
+    let coreDataService = CoreDataService()
+    weak var delegate: ErrorMessageDisplayable?
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -35,29 +37,12 @@ final class RecipeDetailsModel: ImageDownloadable {
     }
     
     func addToFavorite() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext)!
-        let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
-        let ingredientLinesData = try! NSKeyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
-                                                                    requiringSecureCoding: true)
-        
-        recipeEntity.setValue(recipe.image, forKey: "image")
-        recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
-        recipeEntity.setValue(recipe.label, forKey: "label")
-        recipeEntity.setValue(recipe.url, forKey: "url")
-        
-        
-        do {
-            try managedContext.save()
+        switch coreDataService.addToFavorite(recipe: recipe) {
+        case let .success(recipeEntity):
             favorites.append(recipeEntity)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+        case let .failure(error):
+            delegate?.show(error)
         }
-        print("RECIPES Has been added ")
     }
     
     func delete() {
