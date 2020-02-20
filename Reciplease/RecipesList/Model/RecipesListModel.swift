@@ -18,7 +18,7 @@ final class RecipesListModel: ImageDownloadable {
     
     var recipes: [Recipe] = []
     let source: Source
-    let coreDataService = CoreDataService()
+    let coreDataService: FavoriteFetchableProtocol = CoreDataService()
     weak var delegate: RecipesListModelDelegate?
     
     init(source: Source) {
@@ -62,8 +62,7 @@ final class RecipesListModel: ImageDownloadable {
     }
 }
 
-protocol RecipesListModelDelegate: class {
+protocol RecipesListModelDelegate: ErrorMessageDisplayable {
     func reloadData()
-    
-    func show(_ error: Error)
 }
+

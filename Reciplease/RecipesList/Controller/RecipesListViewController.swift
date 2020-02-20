@@ -82,13 +82,6 @@ extension RecipesListViewController: UITableViewDelegate {
 }
 
 extension RecipesListViewController: RecipesListModelDelegate {
-    
-    func show(_ error: Error) {
-        let alertVC = UIAlertController(title: "Erreur", message: error.localizedDescription, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-    
     func reloadData() {
         listTableView.reloadData()
     }
