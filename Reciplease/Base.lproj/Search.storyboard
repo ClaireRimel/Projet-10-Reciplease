@@ -26,15 +26,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="o0a-zc-45q">
-                                        <rect key="frame" x="0.0" y="43.5" width="382" height="44"/>
+                                        <rect key="frame" x="0.0" y="43.5" width="382" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, Cheese, Sausages..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uf0-US-NJb">
-                                                <rect key="frame" x="0.0" y="0.0" width="306" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="306" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-69-BCo">
-                                                <rect key="frame" x="322" y="0.0" width="60" height="44"/>
+                                                <rect key="frame" x="322" y="0.0" width="60" height="34"/>
                                                 <color key="backgroundColor" red="0.34568142889999998" green="0.5782647729" blue="0.38820743559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="4TL-ka-DkC"/>
@@ -50,17 +50,17 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <stackView contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IWK-ce-imz">
-                                        <rect key="frame" x="0.0" y="104.5" width="382" height="30"/>
+                                        <rect key="frame" x="0.0" y="94.5" width="382" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYB-CU-ni8">
-                                                <rect key="frame" x="0.0" y="0.0" width="312" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="312" height="34"/>
                                                 <color key="backgroundColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-yB-lsf">
-                                                <rect key="frame" x="322" y="0.0" width="60" height="30"/>
+                                                <rect key="frame" x="322" y="0.0" width="60" height="34"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="Slm-Cq-wdg"/>
@@ -76,7 +76,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="laP-sT-ZCF">
-                                        <rect key="frame" x="0.0" y="151.5" width="382" height="583.5"/>
+                                        <rect key="frame" x="0.0" y="145.5" width="382" height="589.5"/>
                                         <color key="backgroundColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="separatorColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +112,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="8JN-yB-lsf" firstAttribute="height" secondItem="dQm-69-BCo" secondAttribute="height" multiplier="0.683333" id="eQc-JN-KNk"/>
+                                    <constraint firstItem="8JN-yB-lsf" firstAttribute="height" secondItem="dQm-69-BCo" secondAttribute="height" id="eQc-JN-KNk"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -132,8 +132,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="dQm-69-BCo" id="jWO-zG-MEm"/>
+                        <outlet property="clearButton" destination="8JN-yB-lsf" id="vBX-Na-JAg"/>
                         <outlet property="ingredientsTableView" destination="laP-sT-ZCF" id="WGe-rK-nNe"/>
                         <outlet property="ingredientsTextField" destination="uf0-US-NJb" id="4dJ-oY-VUq"/>
+                        <outlet property="searchForRecipesButton" destination="d9S-DK-hk5" id="nMH-Pi-ak9"/>
                         <segue destination="Xu6-u1-FqW" kind="show" identifier="RecipesList" id="zxC-y7-NBS"/>
                     </connections>
                 </viewController>
