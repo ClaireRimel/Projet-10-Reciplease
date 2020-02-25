@@ -17,14 +17,12 @@ final class RecipeDetailsViewController: UIViewController {
     @IBOutlet var recipeLabel: UILabel!
     @IBOutlet var recipeTableView: UITableView!
     @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
-    @IBOutlet var getDirectionButtonItem: UIButton!
     
     var model: RecipeDetailsModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDirectionButtonItem.layer.cornerRadius = 5
-        recipeImage.layer.cornerRadius = 5
+        recipeImage.layer.cornerRadius = 8
         // Do any additional setup after loading the view.
         model?.delegate = self
         
@@ -51,7 +49,7 @@ final class RecipeDetailsViewController: UIViewController {
         })
     }
     
-    @IBAction func getDirectionButton() {
+    @IBAction func getDirection() {
         if let url = model?.getURL() {
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true

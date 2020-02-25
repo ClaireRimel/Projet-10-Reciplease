@@ -33,7 +33,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-69-BCo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-69-BCo" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
                                                 <rect key="frame" x="322" y="0.0" width="60" height="34"/>
                                                 <color key="backgroundColor" red="0.34568142889999998" green="0.5782647729" blue="0.38820743559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
@@ -59,7 +59,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-yB-lsf">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-yB-lsf" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
                                                 <rect key="frame" x="322" y="0.0" width="60" height="34"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -97,7 +97,7 @@
                                             <outlet property="delegate" destination="6aU-8m-JId" id="1kP-L7-1Zy"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9S-DK-hk5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9S-DK-hk5" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="752" width="382" height="50"/>
                                         <color key="backgroundColor" red="0.34568142889999998" green="0.5782647729" blue="0.38820743559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -132,11 +132,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="dQm-69-BCo" id="jWO-zG-MEm"/>
-                        <outlet property="clearButton" destination="8JN-yB-lsf" id="vBX-Na-JAg"/>
                         <outlet property="ingredientsTableView" destination="laP-sT-ZCF" id="WGe-rK-nNe"/>
                         <outlet property="ingredientsTextField" destination="uf0-US-NJb" id="4dJ-oY-VUq"/>
-                        <outlet property="searchForRecipesButton" destination="d9S-DK-hk5" id="nMH-Pi-ak9"/>
                         <segue destination="Xu6-u1-FqW" kind="show" identifier="RecipesList" id="zxC-y7-NBS"/>
                     </connections>
                 </viewController>

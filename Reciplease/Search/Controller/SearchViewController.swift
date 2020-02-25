@@ -12,20 +12,8 @@ final class SearchViewController: UIViewController {
     
     @IBOutlet var ingredientsTextField: UITextField!
     @IBOutlet var ingredientsTableView: UITableView!
-    @IBOutlet var addButton: UIButton!
-    @IBOutlet var clearButton: UIButton!
-    @IBOutlet var searchForRecipesButton: UIButton!
     
     let model = SearchModel()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        addButton.layer.cornerRadius = 5
-        clearButton.layer.cornerRadius = 5
-        searchForRecipesButton.layer.cornerRadius = 5
-        // Do any additional setup after loading the view.
-    }
         
     @IBAction func addIngredient() {
         if let text = ingredientsTextField.text {

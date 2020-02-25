@@ -44,7 +44,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ve2-6L-OLg">
+                                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ve2-6L-OLg">
                                         <rect key="frame" x="0.0" y="339" width="382" height="299"/>
                                         <color key="backgroundColor" red="0.1646180451" green="0.15686333180000001" blue="0.15686270590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -69,7 +69,7 @@
                                             <outlet property="delegate" destination="q0T-fX-25t" id="6hc-V0-U4d"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBu-91-1Pi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBu-91-1Pi" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="645" width="382" height="50"/>
                                         <color key="backgroundColor" red="0.34568142889999998" green="0.5782647729" blue="0.38820743559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -79,7 +79,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="getDirectionButton" destination="q0T-fX-25t" eventType="touchUpInside" id="1Qb-Md-pqq"/>
+                                            <action selector="getDirection" destination="q0T-fX-25t" eventType="touchUpInside" id="1Qb-Md-pqq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -120,7 +120,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteBarButtonItem" destination="nMN-sq-eQN" id="9cA-4z-snB"/>
-                        <outlet property="getDirectionButtonItem" destination="fBu-91-1Pi" id="Fn2-Bm-9dl"/>
                         <outlet property="recipeImage" destination="knz-TH-tYW" id="G66-wq-5kH"/>
                         <outlet property="recipeLabel" destination="8H1-ix-UoI" id="Rar-MY-bO9"/>
                         <outlet property="recipeTableView" destination="Ve2-6L-OLg" id="2DT-Qe-mk3"/>
