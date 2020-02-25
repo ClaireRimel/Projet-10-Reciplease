@@ -148,6 +148,7 @@
                     <connections>
                         <outlet property="ingredientsTableView" destination="laP-sT-ZCF" id="WGe-rK-nNe"/>
                         <outlet property="ingredientsTextField" destination="uf0-US-NJb" id="4dJ-oY-VUq"/>
+                        <outlet property="searchView" destination="PQ3-p0-pm0" id="39d-Lj-hSG"/>
                         <segue destination="Xu6-u1-FqW" kind="show" identifier="RecipesList" id="zxC-y7-NBS"/>
                     </connections>
                 </viewController>

@@ -12,8 +12,10 @@ final class SearchViewController: UIViewController {
     
     @IBOutlet var ingredientsTextField: UITextField!
     @IBOutlet var ingredientsTableView: UITableView!
+    @IBOutlet var searchView: UIView!
     
-    let model = SearchModel()
+    let model = SearchModel()    
+    var alert: UIAlertController?
     
     @IBAction func addIngredient() {
         if let text = ingredientsTextField.text {
@@ -30,17 +32,30 @@ final class SearchViewController: UIViewController {
     }
     
     @IBAction func searchRecipes() {
-        model.searchRecipes { (result) in
-            switch result {
-            case let .success(recipes):
-                self.performSegue(withIdentifier: "RecipesList", sender: recipes)
-                
-            case let .failure(error):
-                let alertVC = UIAlertController(title: "Erreur", message: error.message, preferredStyle: .alert)
-                alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                self.present(alertVC, animated: true, completion: nil)
-            }
+        loader()
+        model.searchRecipes { [weak self](result) in
+            self?.alert?.dismiss(animated: false, completion: {
+                switch result {
+                case let .success(recipes):
+                    self?.performSegue(withIdentifier: "RecipesList", sender: recipes)
+                    
+                case let .failure(error):
+                    self?.show(error)
+                }
+            })
         }
+    }
+    
+    func loader() {
+        alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating()
+        
+        alert!.view.addSubview(loadingIndicator)
+        self.present(alert!, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
@@ -51,6 +66,8 @@ final class SearchViewController: UIViewController {
                 let recipes = sender as? [Recipe] {
                 let model = RecipesListModel(source: .search(recipes))
                 destination.model = model
+                
+                
             }
         }
     }
@@ -88,5 +105,9 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+}
+
+extension SearchViewController: ErrorMessageDisplayable {
     
 }
