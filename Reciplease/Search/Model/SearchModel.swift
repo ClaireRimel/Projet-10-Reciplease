@@ -15,10 +15,7 @@ final class SearchModel {
     
     let networkService: NetworkServiceInterface = NetworkService()
     
-//    init(networkService: NetworkServiceInterface = NetworkService()) {
-//        self.networkService = networkService
-//    }
-    
+
     func add(ingredient: String) {
         ingredients.append(ingredient)
     }
