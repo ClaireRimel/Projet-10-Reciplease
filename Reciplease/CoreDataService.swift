@@ -72,12 +72,12 @@ extension CoreDataService {
         
         do {
             try managedContext.save()
+            print("RECIPES Has been added ")
             return .success(recipeEntity)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
             return .failure(error)
         }
-        print("RECIPES Has been added ")
     }
     
     func delete(recipe: Recipe) {

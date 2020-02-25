@@ -14,7 +14,7 @@ final class SearchViewController: UIViewController {
     @IBOutlet var ingredientsTableView: UITableView!
     
     let model = SearchModel()
-        
+    
     @IBAction func addIngredient() {
         if let text = ingredientsTextField.text {
             model.add(ingredient: text)
@@ -44,7 +44,7 @@ final class SearchViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipesList" {
             if let destination = segue.destination as? RecipesListViewController,
@@ -61,11 +61,11 @@ extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.numberOfIngredients()
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientTableViewCell", for: indexPath) as? IngredientTableViewCell else {
             return UITableViewCell()
@@ -74,6 +74,13 @@ extension SearchViewController: UITableViewDataSource {
         cell.ingredient = model.getIngredient(for: indexPath)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            model.removeIngredient(at: indexPath)
+            ingredientsTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDelegate {
@@ -81,4 +88,5 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
 }

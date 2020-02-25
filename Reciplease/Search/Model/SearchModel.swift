@@ -11,7 +11,7 @@ import Alamofire
 
 final class SearchModel {
     
-     private var ingredients: [String] = []
+    private var ingredients: [String] = []
     
     let networkService: NetworkServiceInterface = NetworkService()
     
@@ -21,6 +21,10 @@ final class SearchModel {
     
     func add(ingredient: String) {
         ingredients.append(ingredient)
+    }
+    
+    func removeIngredient(at indexPath: IndexPath) {
+        ingredients.remove(at: indexPath.row)
     }
     
     func removeIngredients() {
@@ -63,32 +67,6 @@ final class SearchModel {
                 }
             }
         }
-        
-        
-        
-        //old code...
-//        AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
-//
-//            debugPrint(response)
-//            if let error = response.error {
-//                DispatchQueue.main.async {
-//                    then(.failure(.requestError(error as NSError)))
-//                }
-//                return
-//            }
-//
-//            guard let data = response.data,
-//                let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
-//                    DispatchQueue.main.async {
-//                        then(.failure(.invalidResponseFormat))
-//                    }
-//                    return
-//            }
-//            // by using map, we create an array of recipe
-//            let recipes = responseJSON.hits.map({ $0.recipe })
-//            print(recipes)
-//            then(.success(recipes))
-//        }
     }
 }
 

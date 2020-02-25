@@ -33,14 +33,21 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-69-BCo" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-69-BCo" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
                                                 <rect key="frame" x="322" y="0.0" width="60" height="34"/>
                                                 <color key="backgroundColor" red="0.34568142889999998" green="0.5782647729" blue="0.38820743559999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="4TL-ka-DkC"/>
                                                 </constraints>
-                                                <state key="normal" title="Add">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Add">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system" size="15"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                 </state>
                                                 <connections>
                                                     <action selector="addIngredient" destination="6aU-8m-JId" eventType="touchUpInside" id="GYC-9E-NXG"/>
@@ -59,14 +66,21 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-yB-lsf" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-yB-lsf" customClass="RoundButton" customModule="Reciplease" customModuleProvider="target">
                                                 <rect key="frame" x="322" y="0.0" width="60" height="34"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="Slm-Cq-wdg"/>
                                                 </constraints>
-                                                <state key="normal" title="Clear">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Clear">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system" size="15"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                 </state>
                                                 <connections>
                                                     <action selector="removeIngredients" destination="6aU-8m-JId" eventType="touchUpInside" id="H6h-HN-tyt"/>
