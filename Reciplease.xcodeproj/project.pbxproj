@@ -12,6 +12,8 @@
 		FA077BE923C1096600CE90C0 /* ImageDownloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA077BE723C1086000CE90C0 /* ImageDownloadable.swift */; };
 		FA16849B23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16849A23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift */; };
 		FA215E05241403B100D9D498 /* ResponseJSonForTest.json in Resources */ = {isa = PBXBuildFile; fileRef = FA215E04241403B100D9D498 /* ResponseJSonForTest.json */; };
+		FA215E0724140EA100D9D498 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA215E0624140EA100D9D498 /* NetworkService.swift */; };
+		FA215E092414182600D9D498 /* RecipeRequestInvalidFormat.json in Resources */ = {isa = PBXBuildFile; fileRef = FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */; };
 		FA3FF94F23F1E3CF00B624E4 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA084B9C23C5086C007999EB /* RecipleaseTests.swift */; };
 		FA5658EA23EDC1AB00A397B9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */; };
 		FA5658ED23EDC22A00A397B9 /* FavoriteFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */; };
@@ -60,6 +62,8 @@
 		FA084BA423C508AF007999EB /* SearchModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelTest.swift; sourceTree = "<group>"; };
 		FA16849A23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageDisplayableProtocole.swift; sourceTree = "<group>"; };
 		FA215E04241403B100D9D498 /* ResponseJSonForTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ResponseJSonForTest.json; sourceTree = "<group>"; };
+		FA215E0624140EA100D9D498 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipeRequestInvalidFormat.json; sourceTree = "<group>"; };
 		FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFetchable.swift; sourceTree = "<group>"; };
 		FA6E09A523BFE12500C39082 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				FA084B9C23C5086C007999EB /* RecipleaseTests.swift */,
 				FA084BA423C508AF007999EB /* SearchModelTest.swift */,
 				FA215E04241403B100D9D498 /* ResponseJSonForTest.json */,
+				FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				FAE4CE1323BBCF6000124223 /* SearchModel.swift */,
 				FAA3D11623BE616700C68A8E /* SearchRecipesResponse.swift */,
 				FAA3D10923BD153900C68A8E /* SearchRecipesError.swift */,
+				FA215E0624140EA100D9D498 /* NetworkService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA215E092414182600D9D498 /* RecipeRequestInvalidFormat.json in Resources */,
 				FA215E05241403B100D9D498 /* ResponseJSonForTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +473,7 @@
 				FA077BE623C0E86B00CE90C0 /* IngredientTableViewCell.swift in Sources */,
 				FAE4CE1223BBBFBA00124223 /* SearchViewController.swift in Sources */,
 				FAE4CE0423BBBD4000124223 /* Reciplease.xcdatamodeld in Sources */,
+				FA215E0724140EA100D9D498 /* NetworkService.swift in Sources */,
 				FA16849B23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift in Sources */,
 				FAA3D11E23BE97AC00C68A8E /* RecipeDetailsViewController.swift in Sources */,
 				FAE4CE1423BBCF6000124223 /* SearchModel.swift in Sources */,

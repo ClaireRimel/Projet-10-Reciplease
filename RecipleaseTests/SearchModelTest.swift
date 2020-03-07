@@ -10,7 +10,7 @@ import XCTest
 @testable import Reciplease
 
 class SearchModelTest: XCTestCase {
-
+    
     var sut: SearchModel!
     var networkServiceMock: NetworkServiceMock!
     
@@ -18,25 +18,39 @@ class SearchModelTest: XCTestCase {
         networkServiceMock = NetworkServiceMock()
         sut = SearchModel(networkService: networkServiceMock)
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testAdd() {
         // given
         XCTAssertEqual(sut.numberOfIngredients(), 0)
         
         // when
         let ingredientToAdd = "Egg"
-       sut.add(ingredient: ingredientToAdd)
-
+        sut.add(ingredient: ingredientToAdd)
+        
         // then
         XCTAssertEqual(sut.numberOfIngredients(), 1)
         XCTAssertEqual(sut.getIngredient(for: IndexPath(row: 0, section: 0)), ingredientToAdd)
     }
-
-
+    
+    func testRemoveIngredient() {
+        // given
+        let indexPath = IndexPath(row: 0, section: 0)
+        sut.add(ingredient: "Egg")
+        sut.add(ingredient: "Pasta")
+        
+        XCTAssertEqual(sut.numberOfIngredients(), 2)
+        
+        // when
+        sut.removeIngredient(at: indexPath)
+        
+        // then
+        XCTAssertEqual(sut.numberOfIngredients(), 1)
+    }
+    
     func testRemoveIngredients() {
         // given
         sut.add(ingredient: "Egg")
@@ -47,6 +61,25 @@ class SearchModelTest: XCTestCase {
         
         // then
         XCTAssertEqual(sut.numberOfIngredients(), 0)
+    }
+    
+    func testInvalidResponse() throws {
+        //Given
+        let testExpectation = expectation(description: "")
+        let bundle = Bundle(for: SearchModelTest.self)
+        let path = bundle.path(forResource: "RecipeRequestInvalidFormat", ofType: "json")
+        let data = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        
+        networkServiceMock.result = .success(data)
+        
+        //When
+        sut.searchRecipes { (result) in
+            
+            //Then
+            XCTAssertEqual(result, .failure(.invalidResponseFormat))
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 1)
     }
     
     func testSearchRecipesRequestError() {
@@ -60,10 +93,8 @@ class SearchModelTest: XCTestCase {
         sut.searchRecipes { (result) in
             //Then
             XCTAssertEqual(result, .failure(.requestError(error as NSError)))
-            
             testExpectation.fulfill()
         }
-        
         wait(for: [testExpectation], timeout: 1)
     }
     
@@ -73,16 +104,16 @@ class SearchModelTest: XCTestCase {
         let bundle = Bundle(for: SearchModelTest.self)
         let path = bundle.path(forResource: "ResponseJSonForTest", ofType: "json")
         let data = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
-       
+        
         networkServiceMock.result = .success(data)
         
         //When
         sut.searchRecipes { (result) in
+            
             //Then
             XCTAssertEqual(try? result.get().count, 10)
             testExpectation.fulfill()
         }
-        
         wait(for: [testExpectation], timeout: 1)
     }
 }
