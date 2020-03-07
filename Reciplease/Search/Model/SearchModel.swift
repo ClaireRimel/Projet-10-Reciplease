@@ -13,9 +13,13 @@ final class SearchModel {
     
     private var ingredients: [String] = []
     
-    let networkService: NetworkServiceInterface = NetworkService()
+    let networkService: NetworkServiceInterface
     
-
+    //default arguments
+    init(networkService: NetworkServiceInterface = NetworkService()) {
+        self.networkService = networkService
+    }
+    
     func add(ingredient: String) {
         ingredients.append(ingredient)
     }
@@ -73,7 +77,7 @@ protocol NetworkServiceInterface {
 }
 
 final class NetworkService: NetworkServiceInterface {
-        
+    
     func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
         AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
             
@@ -86,19 +90,5 @@ final class NetworkService: NetworkServiceInterface {
                 then(.success(data))
             }
         }
-    }
-}
-
-//unit test target
-
-final class NetworkServiceMock: NetworkServiceInterface {
-    
-    var parameters: [String : String] = [:]
-    
-    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
-        //...
-        self.parameters = parameters
-        
-        then(.success(Data()))
     }
 }

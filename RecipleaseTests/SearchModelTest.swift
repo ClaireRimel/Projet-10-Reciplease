@@ -12,9 +12,11 @@ import XCTest
 class SearchModelTest: XCTestCase {
 
     var sut: SearchModel!
+    var networkServiceMock: NetworkServiceMock!
     
     override func setUp() {
-      sut = SearchModel()
+        networkServiceMock = NetworkServiceMock()
+        sut = SearchModel(networkService: networkServiceMock)
     }
 
     override func tearDown() {
@@ -47,23 +49,55 @@ class SearchModelTest: XCTestCase {
         XCTAssertEqual(sut.numberOfIngredients(), 0)
     }
     
-    func testSearchRecipes() {
-        // given
+    func testSearchRecipesRequestError() {
+        //Given
         let testExpectation = expectation(description: "")
-        sut.add(ingredient: "Egg")
-
-        // when
+        
+        let error = NSError(domain: "", code: 0, userInfo: nil)
+        networkServiceMock.result = .failure(error)
+        
+        //When
         sut.searchRecipes { (result) in
-            // then
+            //Then
+            XCTAssertEqual(result, .failure(.requestError(error as NSError)))
             
-            //A -> array recipes
-
             testExpectation.fulfill()
         }
-
-        //TODO: wait...
+        
+        wait(for: [testExpectation], timeout: 1)
     }
     
-    //B -> error
+    func testSearchRecipesRequestSuccess() throws {
+        //Given
+        let testExpectation = expectation(description: "")
+        let bundle = Bundle(for: SearchModelTest.self)
+        let path = bundle.path(forResource: "ResponseJSonForTest", ofType: "json")
+        let data = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+       
+        networkServiceMock.result = .success(data)
+        
+        //When
+        sut.searchRecipes { (result) in
+            //Then
+            XCTAssertEqual(try? result.get().count, 10)
+            testExpectation.fulfill()
+        }
+        
+        wait(for: [testExpectation], timeout: 1)
+    }
+}
+
+final class NetworkServiceMock: NetworkServiceInterface {
     
+    var parameters: [String : String] = [:]
+    
+    var result: Result<Data, Error>?
+    
+    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
+        self.parameters = parameters
+        
+        if let result = result {
+            then(result)
+        }
+    }
 }
