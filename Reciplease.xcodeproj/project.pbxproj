@@ -29,7 +29,6 @@
 		FAB0CC5323CDF4AC003BE0A2 /* RecipeDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB0CC5123CDF4AC003BE0A2 /* RecipeDetails.storyboard */; };
 		FAE4CDFA23BBBD4000124223 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDF923BBBD4000124223 /* AppDelegate.swift */; };
 		FAE4CDFC23BBBD4000124223 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */; };
-		FAE4CDFE23BBBD4000124223 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CDFD23BBBD4000124223 /* ViewController.swift */; };
 		FAE4CE0123BBBD4000124223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE4CDFF23BBBD4000124223 /* Main.storyboard */; };
 		FAE4CE0423BBBD4000124223 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CE0223BBBD4000124223 /* Reciplease.xcdatamodeld */; };
 		FAE4CE0623BBBD4200124223 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE4CE0523BBBD4200124223 /* Assets.xcassets */; };
@@ -76,7 +75,6 @@
 		FAE4CDF623BBBD4000124223 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE4CDF923BBBD4000124223 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAE4CDFD23BBBD4000124223 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FAE4CE0023BBBD4000124223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAE4CE0323BBBD4000124223 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		FAE4CE0523BBBD4200124223 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +127,17 @@
 				FA084BA423C508AF007999EB /* SearchModelTest.swift */,
 			);
 			path = RecipleaseTests;
+			sourceTree = "<group>";
+		};
+		FA1185D1240EEC34004C5889 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */,
+				FA077BE723C1086000CE90C0 /* ImageDownloadable.swift */,
+				FA16849A23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift */,
+				FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		FA7A682323C0D245008C2CF8 /* Controller */ = {
@@ -211,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				FA7E55EA24058916004F96F7 /* RoundButton.swift */,
+				FA6E09A523BFE12500C39082 /* UIView+Gradient.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -261,20 +271,15 @@
 				FAA3D11A23BE955400C68A8E /* RecipeDetails */,
 				FAA3D10B23BD2F6E00C68A8E /* RecipesList */,
 				FAE4CE1023BBBF8400124223 /* Search */,
-				FAE4CDF923BBBD4000124223 /* AppDelegate.swift */,
 				FA7E55E9240588A6004F96F7 /* Design */,
-				FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */,
-				FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */,
+				FA1185D1240EEC34004C5889 /* Sources */,
+				FAE4CDF923BBBD4000124223 /* AppDelegate.swift */,
 				FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */,
-				FA16849A23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift */,
-				FAE4CDFD23BBBD4000124223 /* ViewController.swift */,
 				FAE4CDFF23BBBD4000124223 /* Main.storyboard */,
 				FAE4CE0523BBBD4200124223 /* Assets.xcassets */,
 				FAE4CE0723BBBD4200124223 /* LaunchScreen.storyboard */,
 				FAE4CE0A23BBBD4200124223 /* Info.plist */,
 				FAE4CE0223BBBD4000124223 /* Reciplease.xcdatamodeld */,
-				FA6E09A523BFE12500C39082 /* UIView+Gradient.swift */,
-				FA077BE723C1086000CE90C0 /* ImageDownloadable.swift */,
 				FA084B9E23C5086C007999EB /* Info.plist */,
 			);
 			path = Reciplease;
@@ -457,7 +462,6 @@
 				FA077BE623C0E86B00CE90C0 /* IngredientTableViewCell.swift in Sources */,
 				FAE4CE1223BBBFBA00124223 /* SearchViewController.swift in Sources */,
 				FAE4CE0423BBBD4000124223 /* Reciplease.xcdatamodeld in Sources */,
-				FAE4CDFE23BBBD4000124223 /* ViewController.swift in Sources */,
 				FA16849B23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift in Sources */,
 				FAA3D11E23BE97AC00C68A8E /* RecipeDetailsViewController.swift in Sources */,
 				FAE4CE1423BBCF6000124223 /* SearchModel.swift in Sources */,
