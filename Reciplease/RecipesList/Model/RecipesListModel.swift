@@ -18,11 +18,12 @@ final class RecipesListModel: ImageDownloadable {
     
     var recipes: [Recipe] = []
     let source: Source
-    let coreDataService: FavoriteFetchableProtocol = CoreDataService()
+    let coreDataService: FavoriteFetchable
     weak var delegate: RecipesListModelDelegate?
-    
-    init(source: Source) {
+
+    init(source: Source, coreDataService: FavoriteFetchable = CoreDataService()) {
         self.source = source
+        self.coreDataService = coreDataService
         switch source {
         case let .search(recipes):
             self.recipes = recipes

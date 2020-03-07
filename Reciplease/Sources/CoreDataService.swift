@@ -18,7 +18,7 @@ final class CoreDataService {
     }
 }
 
-extension CoreDataService: FavoriteFetchableProtocol {
+extension CoreDataService: FavoriteFetchable {
     
     func fetchRecipes() -> Result<[Recipe], Error> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

@@ -8,8 +8,7 @@
 
 import Foundation
 
-protocol FavoriteFetchableProtocol {
+protocol FavoriteFetchable {
     
     func fetchRecipes() -> Result<[Recipe], Error>
-    
 }
