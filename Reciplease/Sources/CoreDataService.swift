@@ -50,7 +50,7 @@ extension CoreDataService: FavoriteFetchable {
     }
 }
 
-extension CoreDataService {
+extension CoreDataService: FavoriteManageable {
     
     func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

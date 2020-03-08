@@ -13,14 +13,16 @@ final class RecipeDetailsModel {
     
     let recipe: Recipe
     var favorites: [NSManagedObject] = []
-    let coreDataService = CoreDataService()
+    let coreDataService: FavoriteManageable
     let imageDownloadable: ImageDownloadable
     weak var delegate: ErrorMessageDisplayable?
     
     init(recipe: Recipe,
-         imageDownloadable: ImageDownloadable = ImageDownloadableService()) {
+         imageDownloadable: ImageDownloadable = ImageDownloadableService(),
+         coreDataService: FavoriteManageable = CoreDataService()) {
         self.recipe = recipe
         self.imageDownloadable = imageDownloadable
+        self.coreDataService = coreDataService
     }
     
     func getDetails(for indexPath: IndexPath) -> String {
