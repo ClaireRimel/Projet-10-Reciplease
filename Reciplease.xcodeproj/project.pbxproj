@@ -15,10 +15,11 @@
 		FA215E0724140EA100D9D498 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA215E0624140EA100D9D498 /* NetworkService.swift */; };
 		FA215E092414182600D9D498 /* RecipeRequestInvalidFormat.json in Resources */ = {isa = PBXBuildFile; fileRef = FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */; };
 		FA215E0B241419D200D9D498 /* RecipesListModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA215E0A241419D200D9D498 /* RecipesListModelTest.swift */; };
-		FA3FF94F23F1E3CF00B624E4 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA084B9C23C5086C007999EB /* RecipleaseTests.swift */; };
 		FA47C76924156CF3008692AE /* ImageDownloadableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA47C76824156CF3008692AE /* ImageDownloadableMock.swift */; };
 		FA47C76B24156D55008692AE /* RecipesListModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA47C76A24156D55008692AE /* RecipesListModelDelegateMock.swift */; };
 		FA47C76D24156DA9008692AE /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA47C76C24156DA9008692AE /* NetworkServiceMock.swift */; };
+		FA47C76F24156FB9008692AE /* RecipeDetailsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA47C76E24156FB9008692AE /* RecipeDetailsModelTests.swift */; };
+		FA47C771241570F4008692AE /* FavoriteFetchableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA47C770241570F4008692AE /* FavoriteFetchableMock.swift */; };
 		FA5658EA23EDC1AB00A397B9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */; };
 		FA5658ED23EDC22A00A397B9 /* FavoriteFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */; };
 		FA5658EE23EDC63200A397B9 /* SearchModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA084BA423C508AF007999EB /* SearchModelTest.swift */; platformFilter = ios; };
@@ -61,7 +62,6 @@
 		FA077BE523C0E86B00CE90C0 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
 		FA077BE723C1086000CE90C0 /* ImageDownloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadable.swift; sourceTree = "<group>"; };
 		FA084B9A23C5086C007999EB /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA084B9C23C5086C007999EB /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		FA084B9E23C5086C007999EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = RecipleaseTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		FA084BA423C508AF007999EB /* SearchModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelTest.swift; sourceTree = "<group>"; };
 		FA16849A23FF1F6600097082 /* ErrorMessageDisplayableProtocole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageDisplayableProtocole.swift; sourceTree = "<group>"; };
@@ -72,6 +72,8 @@
 		FA47C76824156CF3008692AE /* ImageDownloadableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadableMock.swift; sourceTree = "<group>"; };
 		FA47C76A24156D55008692AE /* RecipesListModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListModelDelegateMock.swift; sourceTree = "<group>"; };
 		FA47C76C24156DA9008692AE /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		FA47C76E24156FB9008692AE /* RecipeDetailsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsModelTests.swift; sourceTree = "<group>"; };
+		FA47C770241570F4008692AE /* FavoriteFetchableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFetchableMock.swift; sourceTree = "<group>"; };
 		FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFetchable.swift; sourceTree = "<group>"; };
 		FA6E09A523BFE12500C39082 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
@@ -137,12 +139,12 @@
 		FA084B9B23C5086C007999EB /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA47C76724156CB0008692AE /* Mocks */,
+				FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */,
+				FA215E04241403B100D9D498 /* ResponseJSonForTest.json */,
+				FA47C76E24156FB9008692AE /* RecipeDetailsModelTests.swift */,
 				FA215E0A241419D200D9D498 /* RecipesListModelTest.swift */,
 				FA084BA423C508AF007999EB /* SearchModelTest.swift */,
-				FA084B9C23C5086C007999EB /* RecipleaseTests.swift */,
-				FA215E04241403B100D9D498 /* ResponseJSonForTest.json */,
-				FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */,
+				FA47C76724156CB0008692AE /* Mocks */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -164,6 +166,7 @@
 				FA47C76824156CF3008692AE /* ImageDownloadableMock.swift */,
 				FA47C76A24156D55008692AE /* RecipesListModelDelegateMock.swift */,
 				FA47C76C24156DA9008692AE /* NetworkServiceMock.swift */,
+				FA47C770241570F4008692AE /* FavoriteFetchableMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -474,11 +477,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA47C76F24156FB9008692AE /* RecipeDetailsModelTests.swift in Sources */,
 				FA47C76B24156D55008692AE /* RecipesListModelDelegateMock.swift in Sources */,
-				FA3FF94F23F1E3CF00B624E4 /* RecipleaseTests.swift in Sources */,
 				FA47C76D24156DA9008692AE /* NetworkServiceMock.swift in Sources */,
 				FA5658EE23EDC63200A397B9 /* SearchModelTest.swift in Sources */,
 				FA215E0B241419D200D9D498 /* RecipesListModelTest.swift in Sources */,
+				FA47C771241570F4008692AE /* FavoriteFetchableMock.swift in Sources */,
 				FA47C76924156CF3008692AE /* ImageDownloadableMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

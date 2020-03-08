@@ -119,9 +119,7 @@ class RecipesListModelTest: XCTestCase {
         //Then
         XCTAssertEqual(imageDownloadableMock.url, recipe.image)
     }
-    
-    //test image service fails
-    
+        
     func testImageServiceFails() {
         //Given
         let testexpetation = expectation(description: "")
@@ -188,20 +186,3 @@ class RecipesListModelTest: XCTestCase {
         XCTAssertFalse(favoriteFetchableMock.fetchRecipesWasCalled)
     }
 }
-
-final class FavoriteFetchableMock : FavoriteFetchable {
-    
-    var response: Result<[Recipe], Error> = .success([])
-    var fetchRecipesWasCalled = false
-    
-    func fetchRecipes() -> Result<[Recipe], Error> {
-        fetchRecipesWasCalled = true
-        return response
-    }
-}
-
-//Given
-
-//When
-
-//Then
