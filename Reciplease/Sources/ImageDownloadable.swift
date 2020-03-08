@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+final class ImageDownloadableService: ImageDownloadable {}
+
 protocol ImageDownloadable {
     
     func requestImage(url: String, then: @escaping (Result<UIImage, Error>) -> Void)
@@ -25,7 +27,7 @@ extension ImageDownloadable {
                     then(.failure(error))
                     return
                 }
-                
+    
                 then(.success(image))
                 
             case .failure(let error):

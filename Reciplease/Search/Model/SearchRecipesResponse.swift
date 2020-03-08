@@ -16,7 +16,7 @@ struct RecipeHits: Codable {
     let recipe: Recipe
 }
 
-struct Recipe: Codable {
+struct Recipe: Codable, Equatable {
     let label: String
     let image: String
     let url: String

@@ -7,15 +7,18 @@
 //
 
 import Foundation
-import Alamofire
 
 final class SearchModel {
     
     private var ingredients: [String] = []
     
-    let networkService: NetworkServiceInterface = NetworkService()
+    let networkService: NetworkServiceInterface
     
-
+    //default arguments
+    init(networkService: NetworkServiceInterface = NetworkService()) {
+        self.networkService = networkService
+    }
+    
     func add(ingredient: String) {
         ingredients.append(ingredient)
     }
@@ -43,7 +46,6 @@ final class SearchModel {
         let parameters = ["q": string,
                           "app_id": "a674e9c4",
                           "app_key": "35f93780dbf6f834909870f2529a9871"]
-        //new code..
         networkService.request(parameters: parameters) { (result) in
             switch result {
             case let.success(data):
@@ -64,41 +66,5 @@ final class SearchModel {
                 }
             }
         }
-    }
-}
-
-protocol NetworkServiceInterface {
-    
-    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void)
-}
-
-final class NetworkService: NetworkServiceInterface {
-        
-    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
-        AF.request("https://api.edamam.com/search", method: .get, parameters: parameters).responseJSON { response in
-            
-            if let error = response.error {
-                then(.failure(error))
-                return
-            }
-            
-            if let data = response.data {
-                then(.success(data))
-            }
-        }
-    }
-}
-
-//unit test target
-
-final class NetworkServiceMock: NetworkServiceInterface {
-    
-    var parameters: [String : String] = [:]
-    
-    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
-        //...
-        self.parameters = parameters
-        
-        then(.success(Data()))
     }
 }

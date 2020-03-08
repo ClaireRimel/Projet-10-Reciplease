@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-// the final keyword doesn't allow us to do subclassing
+//The final keyword doesn't allow us to do subclassing
 final class CoreDataService {
     
     private func recoveredIngredientLines(object: NSManagedObject) -> [String] {
@@ -18,7 +18,7 @@ final class CoreDataService {
     }
 }
 
-extension CoreDataService: FavoriteFetchableProtocol {
+extension CoreDataService: FavoriteFetchable {
     
     func fetchRecipes() -> Result<[Recipe], Error> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

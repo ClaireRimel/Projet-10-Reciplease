@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-final class RecipesListModel: ImageDownloadable {
+class RecipesListModel {
     //name space
     enum Source {
         case search([Recipe])
@@ -18,11 +18,17 @@ final class RecipesListModel: ImageDownloadable {
     
     var recipes: [Recipe] = []
     let source: Source
-    let coreDataService: FavoriteFetchableProtocol = CoreDataService()
+    let coreDataService: FavoriteFetchable
+    let imageDownloadable: ImageDownloadable
     weak var delegate: RecipesListModelDelegate?
-    
-    init(source: Source) {
+
+    //Dependency injection via initializer
+    init(source: Source,
+         coreDataService: FavoriteFetchable = CoreDataService(),
+         imageDownloadable: ImageDownloadable = ImageDownloadableService()) {
         self.source = source
+        self.coreDataService = coreDataService
+        self.imageDownloadable = imageDownloadable
         switch source {
         case let .search(recipes):
             self.recipes = recipes
@@ -46,17 +52,17 @@ final class RecipesListModel: ImageDownloadable {
     }
     
     func numberOfRecipes() -> Int {
-           return recipes.count
-       }
+        return recipes.count
+    }
     
     func requestImage(for indexPath: IndexPath, then: @escaping (Result<UIImage, Error>) -> Void) {
         let recipe = recipes[indexPath.row]
-        requestImage(url: recipe.image, then: then)
+        imageDownloadable.requestImage(url: recipe.image, then: then)
     }
     
     func viewWillAppear() {
         // pattern matching
-        if case .favorite = source{
+        if case .favorite = source {
             fetchRecipes()
         }
     }
