@@ -9,15 +9,20 @@
 import UIKit
 import CoreData
 
-final class RecipeDetailsModel: ImageDownloadable {
+final class RecipeDetailsModel {
     
     let recipe: Recipe
     var favorites: [NSManagedObject] = []
-    let coreDataService = CoreDataService()
+    let coreDataService: FavoriteManageable
+    let imageDownloadable: ImageDownloadable
     weak var delegate: ErrorMessageDisplayable?
     
-    init(recipe: Recipe) {
+    init(recipe: Recipe,
+         imageDownloadable: ImageDownloadable = ImageDownloadableService(),
+         coreDataService: FavoriteManageable = CoreDataService()) {
         self.recipe = recipe
+        self.imageDownloadable = imageDownloadable
+        self.coreDataService = coreDataService
     }
     
     func getDetails(for indexPath: IndexPath) -> String {
@@ -33,7 +38,7 @@ final class RecipeDetailsModel: ImageDownloadable {
     }
     
     func requestImage(then: @escaping (Result<UIImage, Error>) -> Void) {
-        requestImage(url: recipe.image, then: then)
+        imageDownloadable.requestImage(url: recipe.image, then: then)
     }
     
     func addToFavorite() {
