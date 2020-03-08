@@ -117,18 +117,3 @@ class SearchModelTest: XCTestCase {
         wait(for: [testExpectation], timeout: 1)
     }
 }
-
-final class NetworkServiceMock: NetworkServiceInterface {
-    
-    var parameters: [String : String] = [:]
-    
-    var result: Result<Data, Error>?
-    
-    func request(parameters: [String : String], then: @escaping (Result<Data, Error>) -> Void) {
-        self.parameters = parameters
-        
-        if let result = result {
-            then(result)
-        }
-    }
-}
