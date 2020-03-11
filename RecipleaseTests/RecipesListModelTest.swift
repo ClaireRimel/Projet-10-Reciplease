@@ -29,7 +29,7 @@ class RecipesListModelTest: XCTestCase {
     
     func testInitFromSearch() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         
         //When
         sut = RecipesListModel(source: .search([recipe]))
@@ -40,7 +40,7 @@ class RecipesListModelTest: XCTestCase {
     
     func testInitFromFavorite() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         favoriteFetchableMock.response = .success([recipe])
         
         //When
@@ -52,7 +52,7 @@ class RecipesListModelTest: XCTestCase {
     
     func testFetchRecipeSuccess() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         favoriteFetchableMock.response = .success([recipe])
         sut = RecipesListModel(source: .search([]), coreDataService: favoriteFetchableMock)
         sut.delegate = delegateMock
@@ -85,7 +85,7 @@ class RecipesListModelTest: XCTestCase {
     func testGetRecipe() {
         //Given
         let indexPath = IndexPath(row: 0, section: 0)
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipesListModel(source: .search([recipe]))
         
         //When
@@ -97,7 +97,7 @@ class RecipesListModelTest: XCTestCase {
     
     func testNumberOfRecipes() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipesListModel(source: .search([recipe]))
         
         //When
@@ -110,7 +110,7 @@ class RecipesListModelTest: XCTestCase {
     func testUsesRecipeImagePropertyAsURLToDownloadImage() {
         //Given
         let indexPath = IndexPath(row: 0, section: 0)
-        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipesListModel(source: .search([recipe]), imageDownloadable: imageDownloadableMock)
         
         //When
@@ -124,7 +124,7 @@ class RecipesListModelTest: XCTestCase {
         //Given
         let testexpetation = expectation(description: "")
         let indexPath = IndexPath(row: 0, section: 0)
-        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipesListModel(source: .search([recipe]), imageDownloadable: imageDownloadableMock)
         
         let error = NSError(domain: "", code: 0, userInfo: nil)
@@ -146,7 +146,7 @@ class RecipesListModelTest: XCTestCase {
         //Given
         let testexpetation = expectation(description: "")
         let indexPath = IndexPath(row: 0, section: 0)
-        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipesListModel(source: .search([recipe]), imageDownloadable: imageDownloadableMock)
         
         let image = UIImage()

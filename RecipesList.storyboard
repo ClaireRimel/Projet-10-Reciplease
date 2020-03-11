@@ -43,10 +43,23 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v09-eZ-1gY">
+                                                    <rect key="frame" x="346.5" y="11" width="47.5" height="30"/>
+                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Z2Q-kS-P0K"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="1"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="438-1N-1e4" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leading" id="0PG-eF-65S"/>
+                                                <constraint firstItem="v09-eZ-1gY" firstAttribute="trailing" secondItem="c63-MU-liD" secondAttribute="trailingMargin" id="Aas-J0-2sd"/>
                                                 <constraint firstItem="438-1N-1e4" firstAttribute="top" secondItem="c63-MU-liD" secondAttribute="top" id="BXz-JK-FJL"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wWG-BL-jhW" secondAttribute="trailing" constant="8" id="MG8-if-eak"/>
                                                 <constraint firstAttribute="bottom" secondItem="438-1N-1e4" secondAttribute="bottom" id="Nd2-It-Y7s"/>
@@ -55,6 +68,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="G3k-xP-TIQ" secondAttribute="trailing" constant="8" id="fgz-KU-JHX"/>
                                                 <constraint firstItem="G3k-xP-TIQ" firstAttribute="leading" secondItem="c63-MU-liD" secondAttribute="leadingMargin" id="i0e-Za-ldc"/>
                                                 <constraint firstItem="wWG-BL-jhW" firstAttribute="bottom" secondItem="c63-MU-liD" secondAttribute="bottomMargin" constant="-16" id="jN9-ro-hkP"/>
+                                                <constraint firstItem="v09-eZ-1gY" firstAttribute="top" secondItem="c63-MU-liD" secondAttribute="topMargin" id="rFj-MR-ynK"/>
                                                 <constraint firstAttribute="trailing" secondItem="438-1N-1e4" secondAttribute="trailing" id="z8f-Tn-wLN"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -62,6 +76,7 @@
                                             <outlet property="ingredientsLabel" destination="wWG-BL-jhW" id="JJ7-X3-swh"/>
                                             <outlet property="nameLabel" destination="G3k-xP-TIQ" id="13C-DB-LJd"/>
                                             <outlet property="recipeImageView" destination="438-1N-1e4" id="psY-Eg-R5D"/>
+                                            <outlet property="timeLabel" destination="v09-eZ-1gY" id="h1w-pi-geA"/>
                                             <segue destination="aGh-HO-vLf" kind="show" identifier="RecipeDetails" id="pIE-cb-Cve"/>
                                         </connections>
                                     </tableViewCell>
@@ -92,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7G-3y-o8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2481" y="-583"/>
+            <point key="canvasLocation" x="2479.7101449275365" y="-583.25892857142856"/>
         </scene>
         <!--UIViewController-q0T-fX-25t-->
         <scene sceneID="EYI-93-nYt">

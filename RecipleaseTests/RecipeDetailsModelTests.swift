@@ -29,7 +29,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testGetFirstIngredient() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: ["1", "2", "3"])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: ["1", "2", "3"], totalTime: 1)
         sut = RecipeDetailsModel(recipe: recipe)
         
         //When
@@ -42,7 +42,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testNumberOfIngredients() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: ["1", "2", "3"])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: ["1", "2", "3"], totalTime: 1)
         sut = RecipeDetailsModel(recipe: recipe)
         
         //When
@@ -54,7 +54,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testGetURL() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "http://www.seriouseats.com/recipes/2011/12/chicken-vesuvio-recipe.html", ingredientLines: [])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "http://www.seriouseats.com/recipes/2011/12/chicken-vesuvio-recipe.html", ingredientLines: [], totalTime: 1)
         sut = RecipeDetailsModel(recipe: recipe)
         
         //When
@@ -67,7 +67,7 @@ class RecipeDetailsModelTests: XCTestCase {
     func testRequestImageSuccess() {
         //Given
         let testexpetation = expectation(description: "")
-        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipeDetailsModel(recipe: recipe, imageDownloadable: imageDownloadableMock)
         
         let image = UIImage()
@@ -88,7 +88,7 @@ class RecipeDetailsModelTests: XCTestCase {
     func testRequestImageFails() {
         //Given
         let testexpetation = expectation(description: "")
-        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipeDetailsModel(recipe: recipe, imageDownloadable: imageDownloadableMock)
         
         let error = NSError(domain: "", code: 0, userInfo: nil)
@@ -108,7 +108,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testAddToFavoriteSuccess() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         let objet = NSManagedObject()
         favoriteManageableMock.addToFavoriteResult = .success(objet)
         sut = RecipeDetailsModel(recipe: recipe, coreDataService: favoriteManageableMock)
@@ -123,7 +123,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testAddToFavoriteError() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         let error = NSError(domain: "", code: 0, userInfo: nil)
         favoriteManageableMock.addToFavoriteResult = .failure(error)
         sut = RecipeDetailsModel(recipe: recipe, coreDataService: favoriteManageableMock)
@@ -139,7 +139,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testDelete() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         sut = RecipeDetailsModel(recipe: recipe,  coreDataService: favoriteManageableMock)
         
         //When
@@ -151,7 +151,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testCheckFavStatusIsFavorite() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         favoriteManageableMock.checkFavStatusResult = .success(true)
         sut = RecipeDetailsModel(recipe: recipe, coreDataService: favoriteManageableMock)
 
@@ -164,7 +164,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testCheckFavStatusIsNotFavorite() {
            //Given
-           let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+           let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
            favoriteManageableMock.checkFavStatusResult = .success(false)
            sut = RecipeDetailsModel(recipe: recipe, coreDataService: favoriteManageableMock)
 
@@ -177,7 +177,7 @@ class RecipeDetailsModelTests: XCTestCase {
     
     func testCheckFavStatusError() {
         //Given
-        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""])
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
         let error = NSError(domain: "", code: 0, userInfo: nil)
         favoriteManageableMock.checkFavStatusResult = .failure(error)
         sut = RecipeDetailsModel(recipe: recipe, coreDataService: favoriteManageableMock)

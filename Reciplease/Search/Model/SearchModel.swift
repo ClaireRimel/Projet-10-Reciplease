@@ -13,6 +13,8 @@ final class SearchModel {
     private var ingredients: [String] = []
     
     let networkService: NetworkServiceInterface
+    weak var delegate: ErrorMessageDisplayable?
+
     
     //default arguments
     init(networkService: NetworkServiceInterface = NetworkService()) {
@@ -20,7 +22,11 @@ final class SearchModel {
     }
     
     func add(ingredient: String) {
-        ingredients.append(ingredient)
+        if ingredient.isEmpty {
+            delegate?.show(SearchRecipesError.emptyIngredientString)
+        } else {
+            ingredients.append(ingredient)
+        }
     }
     
     func removeIngredient(at indexPath: IndexPath) {
@@ -40,6 +46,11 @@ final class SearchModel {
     }
     
     func searchRecipes(then: @escaping (Result<[Recipe], SearchRecipesError>) -> Void) {
+       
+        guard !ingredients.isEmpty else {
+            then(.failure(.emptyIngredientArray))
+            return
+        }
         
         let string = ingredients.joined(separator: " ")
         
@@ -68,3 +79,7 @@ final class SearchModel {
         }
     }
 }
+
+//protocol SearchModelDelegate: ErrorMessageDisplayable {
+//    func display
+//}

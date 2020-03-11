@@ -71,6 +71,7 @@ class SearchModelTest: XCTestCase {
         let data = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
         
         networkServiceMock.result = .success(data)
+        sut.add(ingredient: "Egg")
         
         //When
         sut.searchRecipes { (result) in
@@ -88,6 +89,7 @@ class SearchModelTest: XCTestCase {
         
         let error = NSError(domain: "", code: 0, userInfo: nil)
         networkServiceMock.result = .failure(error)
+        sut.add(ingredient: "Egg")
         
         //When
         sut.searchRecipes { (result) in
@@ -106,6 +108,7 @@ class SearchModelTest: XCTestCase {
         let data = try Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
         
         networkServiceMock.result = .success(data)
+         sut.add(ingredient: "Egg")
         
         //When
         sut.searchRecipes { (result) in

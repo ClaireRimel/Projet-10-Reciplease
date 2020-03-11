@@ -11,16 +11,23 @@ import Foundation
 enum SearchRecipesError: Error, Equatable {
     case requestError(NSError)
     case invalidResponseFormat
+    case emptyIngredientString
+    case emptyIngredientArray
 }
 
-extension SearchRecipesError {
+extension SearchRecipesError: LocalizedError {
     
-    var message: String{
+    var errorDescription: String?  {
         switch self {
         case let .requestError(error):
             return error.localizedDescription
         case .invalidResponseFormat:
-            return "Le format de réponse du serveur est invalide "
+            return "The response format is invalid"
+        case .emptyIngredientString:
+            return "Please enter an ingredient"
+        case .emptyIngredientArray:
+            return "Please enter an ingredient"
         }
     }
 }
+
