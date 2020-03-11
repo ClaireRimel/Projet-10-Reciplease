@@ -36,7 +36,8 @@ extension CoreDataService: FavoriteFetchable {
                 Recipe(label: $0.value(forKey: "label") as? String ?? "",
                        image: $0.value(forKey: "image") as? String ?? "",
                        url: $0.value(forKey: "url") as? String ?? "",
-                       ingredientLines: recoveredIngredientLines(object: $0))
+                       ingredientLines: recoveredIngredientLines(object: $0),
+                       totalTime: $0.value(forKey: "totalTime") as? Int ?? 0)
             }
             
             print("Fetch Result - RECIPES")
