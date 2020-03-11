@@ -17,10 +17,16 @@ final class SearchViewController: UIViewController {
     let model = SearchModel()    
     var alert: UIAlertController?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        model.delegate = self   
+    }
+    
     @IBAction func addIngredient() {
         if let text = ingredientsTextField.text {
             model.add(ingredient: text)
         }
+        
         ingredientsTextField.resignFirstResponder()
         ingredientsTextField.text = ""
         ingredientsTableView.reloadData()
@@ -105,9 +111,6 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
 }
 
-extension SearchViewController: ErrorMessageDisplayable {
-    
-}
+extension SearchViewController: ErrorMessageDisplayable {}

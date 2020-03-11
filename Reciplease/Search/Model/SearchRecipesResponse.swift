@@ -21,5 +21,5 @@ struct Recipe: Codable, Equatable {
     let image: String
     let url: String
     var ingredientLines: [String]
-    // temps de preparation et Note
+    var totalTime: Int
 }
