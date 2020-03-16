@@ -22,7 +22,9 @@ final class SearchModel {
     }
     
     func add(ingredient: String) {
-        if ingredient.isEmpty {
+        let replaced = ingredient.replacingOccurrences(of: " ", with: "")
+
+        if replaced.isEmpty {
             delegate?.show(SearchRecipesError.emptyIngredientString)
         } else {
             ingredients.append(ingredient)
@@ -46,7 +48,6 @@ final class SearchModel {
     }
     
     func searchRecipes(then: @escaping (Result<[Recipe], SearchRecipesError>) -> Void) {
-       
         guard !ingredients.isEmpty else {
             then(.failure(.emptyIngredientArray))
             return
@@ -79,7 +80,3 @@ final class SearchModel {
         }
     }
 }
-
-//protocol SearchModelDelegate: ErrorMessageDisplayable {
-//    func display
-//}
