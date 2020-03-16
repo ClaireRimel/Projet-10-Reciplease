@@ -14,13 +14,13 @@ class RecipeDetailsModelTests: XCTestCase {
     var sut: RecipeDetailsModel!
     var imageDownloadableMock: ImageDownloadableMock!
     var favoriteManageableMock: FavoriteManageableMock!
-    var delegateMock: RecipeDetailsModelDelegateMock!
+    var delegateMock: ErrorMessageDisplayableMock!
     
     
     override func setUp() {
         imageDownloadableMock = ImageDownloadableMock()
         favoriteManageableMock = FavoriteManageableMock()
-        delegateMock = RecipeDetailsModelDelegateMock()
+        delegateMock = ErrorMessageDisplayableMock()
     }
     
     override func tearDown() {

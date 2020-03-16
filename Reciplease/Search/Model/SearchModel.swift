@@ -80,7 +80,3 @@ final class SearchModel {
         }
     }
 }
-
-//protocol SearchModelDelegate: ErrorMessageDisplayable {
-//    func display
-//}
