@@ -1,5 +1,5 @@
 //
-//  RecipeDetailsModelDelegateMock.swift
+//  RecipesListModelDelegateMock.swift
 //  RecipleaseTests
 //
 //  Created by Claire on 08/03/2020.
@@ -8,8 +8,13 @@
 @testable import Reciplease
 import Foundation
 
-final class RecipeDetailsModelDelegateMock: ErrorMessageDisplayable {
+final class RecipesListModelDelegateMock: RecipesListModelDelegate {
+    var reloadDataWasCalled = false
     var error: Error?
+    
+    func reloadData() {
+        reloadDataWasCalled = true
+    }
     
     func show(_ error: Error) {
         self.error = error

@@ -13,14 +13,30 @@ class SearchModelTest: XCTestCase {
     
     var sut: SearchModel!
     var networkServiceMock: NetworkServiceMock!
+    var delegateMock: ErrorMessageDisplayableMock!
     
     override func setUp() {
         networkServiceMock = NetworkServiceMock()
         sut = SearchModel(networkService: networkServiceMock)
+        delegateMock = ErrorMessageDisplayableMock()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func testAddEmptyIngredient() {
+        //Given
+        sut.delegate = delegateMock
+        XCTAssertNil(delegateMock.error)
+        
+        //When
+        sut.add(ingredient: "")
+        
+        //Then
+        XCTAssertEqual(sut.numberOfIngredients(), 0)
+        XCTAssertNotNil(delegateMock.error)
+        
     }
     
     func testAdd() {
@@ -61,6 +77,22 @@ class SearchModelTest: XCTestCase {
         
         // then
         XCTAssertEqual(sut.numberOfIngredients(), 0)
+    }
+    
+    func testInvalideRequestWithEmptyArray() {
+        //Given
+        let testExpectation = expectation(description: "")
+        let error = NSError(domain: "", code: 0, userInfo: nil)
+        networkServiceMock.result = .failure(error)
+        sut.add(ingredient: " ")
+        
+        //When
+        sut.searchRecipes { (result) in
+            //Then
+            XCTAssertEqual(result, .failure(.emptyIngredientArray))
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 1)
     }
     
     func testInvalidResponse() throws {
