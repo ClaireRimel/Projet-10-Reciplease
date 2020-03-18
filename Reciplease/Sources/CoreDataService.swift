@@ -69,6 +69,7 @@ extension CoreDataService: FavoriteManageable {
         recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
         recipeEntity.setValue(recipe.label, forKey: "label")
         recipeEntity.setValue(recipe.url, forKey: "url")
+        recipeEntity.setValue(recipe.totalTime, forKey: "totalTime")
         
         
         do {
