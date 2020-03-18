@@ -84,6 +84,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeInstructionTableViewCell", for: indexPath)
         cell.textLabel?.textColor = .white
+        cell.textLabel?.numberOfLines = 0
         
         if let ingredient = model?.getDetails(for: indexPath) {
             cell.textLabel?.text = ingredient
