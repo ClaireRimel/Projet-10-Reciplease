@@ -46,6 +46,9 @@
 		FAE4CE0923BBBD4200124223 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE4CE0723BBBD4200124223 /* LaunchScreen.storyboard */; };
 		FAE4CE1223BBBFBA00124223 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */; };
 		FAE4CE1423BBCF6000124223 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4CE1323BBCF6000124223 /* SearchModel.swift */; };
+		FAEB26A624295E980035C305 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB26A524295E980035C305 /* CoreDataStack.swift */; };
+		FAEB26A8242960E30035C305 /* TestCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB26A7242960E30035C305 /* TestCoreDataService.swift */; };
+		FAEB26AA2429617C0035C305 /* CoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB26A92429617C0035C305 /* CoreDataStackTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +68,6 @@
 		FA077BE523C0E86B00CE90C0 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
 		FA077BE723C1086000CE90C0 /* ImageDownloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadable.swift; sourceTree = "<group>"; };
 		FA084B9A23C5086C007999EB /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA084B9E23C5086C007999EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = RecipleaseTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		FA084BA423C508AF007999EB /* SearchModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelTest.swift; sourceTree = "<group>"; };
 		FA16849A23FF1F6600097082 /* ErrorMessageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageDisplayable.swift; sourceTree = "<group>"; };
 		FA215E04241403B100D9D498 /* ResponseJSonForTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ResponseJSonForTest.json; sourceTree = "<group>"; };
@@ -104,6 +106,10 @@
 		FAE4CE0A23BBBD4200124223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE4CE1123BBBFBA00124223 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FAE4CE1323BBCF6000124223 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		FAEB26A524295E980035C305 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FAEB26A7242960E30035C305 /* TestCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataService.swift; sourceTree = "<group>"; };
+		FAEB26A92429617C0035C305 /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackTest.swift; sourceTree = "<group>"; };
+		FAEB26AE242964AC0035C305 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +151,12 @@
 		FA084B9B23C5086C007999EB /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				FAEB26AE242964AC0035C305 /* Info.plist */,
 				FA215E082414182600D9D498 /* RecipeRequestInvalidFormat.json */,
 				FA215E04241403B100D9D498 /* ResponseJSonForTest.json */,
 				FA47C76E24156FB9008692AE /* RecipeDetailsModelTests.swift */,
+				FAEB26A92429617C0035C305 /* CoreDataStackTest.swift */,
+				FAEB26A7242960E30035C305 /* TestCoreDataService.swift */,
 				FA215E0A241419D200D9D498 /* RecipesListModelTest.swift */,
 				FA084BA423C508AF007999EB /* SearchModelTest.swift */,
 				FA47C76724156CB0008692AE /* Mocks */,
@@ -159,10 +168,17 @@
 			isa = PBXGroup;
 			children = (
 				FA5658E923EDC1AB00A397B9 /* CoreDataService.swift */,
+				FAEB26A524295E980035C305 /* CoreDataStack.swift */,
 				FA077BE723C1086000CE90C0 /* ImageDownloadable.swift */,
 				FA16849A23FF1F6600097082 /* ErrorMessageDisplayable.swift */,
 				FA5658EC23EDC22A00A397B9 /* FavoriteFetchable.swift */,
 				FA47C77224157D83008692AE /* FavoriteManageable.swift */,
+				FAE4CDF923BBBD4000124223 /* AppDelegate.swift */,
+				FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */,
+				FAE4CDFF23BBBD4000124223 /* Main.storyboard */,
+				FAE4CE0523BBBD4200124223 /* Assets.xcassets */,
+				FAE4CE0723BBBD4200124223 /* LaunchScreen.storyboard */,
+				FAE4CE0223BBBD4000124223 /* Reciplease.xcdatamodeld */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -290,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				FAE4CDF823BBBD4000124223 /* Reciplease */,
-				FA084B9B23C5086C007999EB /* RecipleaseTests */,
 				FAE4CDF723BBBD4000124223 /* Products */,
 				BA1859F11EF1B1943BCC81FD /* Pods */,
 				48545ED59EE3DDEE77699889 /* Frameworks */,
@@ -309,19 +324,13 @@
 		FAE4CDF823BBBD4000124223 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
+				FAE4CE0A23BBBD4200124223 /* Info.plist */,
 				FAA3D11A23BE955400C68A8E /* RecipeDetails */,
 				FAA3D10B23BD2F6E00C68A8E /* RecipesList */,
 				FAE4CE1023BBBF8400124223 /* Search */,
 				FA7E55E9240588A6004F96F7 /* Design */,
 				FA1185D1240EEC34004C5889 /* Sources */,
-				FAE4CDF923BBBD4000124223 /* AppDelegate.swift */,
-				FAE4CDFB23BBBD4000124223 /* SceneDelegate.swift */,
-				FAE4CDFF23BBBD4000124223 /* Main.storyboard */,
-				FAE4CE0523BBBD4200124223 /* Assets.xcassets */,
-				FAE4CE0723BBBD4200124223 /* LaunchScreen.storyboard */,
-				FAE4CE0A23BBBD4200124223 /* Info.plist */,
-				FAE4CE0223BBBD4000124223 /* Reciplease.xcdatamodeld */,
-				FA084B9E23C5086C007999EB /* Info.plist */,
+				FA084B9B23C5086C007999EB /* RecipleaseTests */,
 			);
 			path = Reciplease;
 			sourceTree = "<group>";
@@ -494,6 +503,8 @@
 				FA47C771241570F4008692AE /* FavoriteFetchableMock.swift in Sources */,
 				FAD74996241F7AFF00EB9A1E /* ErrorMessageDisplayableMock.swift in Sources */,
 				FA47C77524157F86008692AE /* FavoriteManageableMock.swift in Sources */,
+				FAEB26AA2429617C0035C305 /* CoreDataStackTest.swift in Sources */,
+				FAEB26A8242960E30035C305 /* TestCoreDataService.swift in Sources */,
 				FA47C76924156CF3008692AE /* ImageDownloadableMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +530,7 @@
 				FAE4CE1423BBCF6000124223 /* SearchModel.swift in Sources */,
 				FAA3D10A23BD153900C68A8E /* SearchRecipesError.swift in Sources */,
 				FAE4CDFA23BBBD4000124223 /* AppDelegate.swift in Sources */,
+				FAEB26A624295E980035C305 /* CoreDataStack.swift in Sources */,
 				FA7E55EB24058916004F96F7 /* RoundButton.swift in Sources */,
 				FA6E09A623BFE12500C39082 /* UIView+Gradient.swift in Sources */,
 				FA5658EA23EDC1AB00A397B9 /* CoreDataService.swift in Sources */,
@@ -579,7 +591,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BDMB887655;
-				INFOPLIST_FILE = RecipleaseTests/Info.plist;
+				INFOPLIST_FILE = Reciplease/RecipleaseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -599,7 +611,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BDMB887655;
-				INFOPLIST_FILE = RecipleaseTests/Info.plist;
+				INFOPLIST_FILE = Reciplease/RecipleaseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

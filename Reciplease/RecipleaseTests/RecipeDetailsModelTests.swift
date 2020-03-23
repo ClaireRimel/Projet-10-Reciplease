@@ -137,6 +137,22 @@ class RecipeDetailsModelTests: XCTestCase {
         XCTAssertNotNil(delegateMock.error)
     }
     
+    func testDeleteError() {
+        //Given
+        let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)
+        let error = NSError(domain: "", code: 0, userInfo: nil)
+        favoriteManageableMock.deleteResult = .failure(error)
+        sut = RecipeDetailsModel(recipe: recipe, coreDataService: favoriteManageableMock)
+        sut.delegate = delegateMock
+        XCTAssertNil(delegateMock.error)
+        
+        //When
+        sut.delete()
+        
+        //Then
+        XCTAssertNotNil(delegateMock.error)
+    }
+    
     func testDelete() {
         //Given
         let recipe = Recipe(label: "Egg Fries", image: "", url: "", ingredientLines: [""], totalTime: 1)

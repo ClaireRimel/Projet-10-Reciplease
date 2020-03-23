@@ -13,7 +13,7 @@ protocol FavoriteManageable {
     
     func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error>
     
-    func delete(recipe: Recipe)
+    func delete(recipe: Recipe) -> Result<Void, Error>
     
     func checkFavStatus(recipe: Recipe) -> Result<Bool, Error>
     

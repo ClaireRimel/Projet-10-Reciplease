@@ -12,6 +12,16 @@ import CoreData
 //The final keyword doesn't allow us to do subclassing
 final class CoreDataService {
     
+    let coreDataStack: CoreDataStack
+
+        //Using dependency injection via initializer allows us to
+        //1. provide as a default argument the value we want to use in our production code
+        //2. possibility to pass a different object as a parameter that can act as a mock for testing purposes
+        init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
+            self.coreDataStack = coreDataStack
+        }
+
+    
     private func recoveredIngredientLines(object: NSManagedObject) -> [String] {
         let ingredientsLines = object.value(forKey: "ingredientLines") as? Data
         return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(ingredientsLines!) as! [String]
@@ -21,11 +31,9 @@ final class CoreDataService {
 extension CoreDataService: FavoriteFetchable {
     
     func fetchRecipes() -> Result<[Recipe], Error> {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Missing AppDelegate reference")
-        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = coreDataStack.persistentContainer.viewContext
+
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
         
         do {
@@ -54,12 +62,9 @@ extension CoreDataService: FavoriteFetchable {
 extension CoreDataService: FavoriteManageable {
     
     func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Missing AppDelegate reference")
-            
-        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let managedContext = coreDataStack.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext)!
         let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
         let ingredientLinesData = try! NSKeyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
@@ -82,12 +87,9 @@ extension CoreDataService: FavoriteManageable {
         }
     }
     
-    func delete(recipe: Recipe) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Missing AppDelegate reference")
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
+    func delete(recipe: Recipe) -> Result<Void, Error> {
+       
+        let managedContext = coreDataStack.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
         fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
@@ -102,18 +104,17 @@ extension CoreDataService: FavoriteManageable {
                 try managedContext.save()
             }
             print("Has been deleted RECIPES")
+            return .success(())
             
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
+            return .failure(error)
         }
     }
     
     func checkFavStatus(recipe: Recipe) -> Result<Bool, Error> {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Missing AppDelegate reference")
-        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = coreDataStack.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
         fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
