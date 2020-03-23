@@ -51,8 +51,14 @@ final class RecipeDetailsModel {
     }
     
     func delete() {
-        coreDataService.delete(recipe: recipe)
+        switch coreDataService.delete(recipe: recipe) {
+        case let .failure(error):
+            delegate?.show(error)
+        default:
+            break
+        }
     }
+    
     
     func checkFavStatus() -> Bool {
         switch coreDataService.checkFavStatus(recipe: recipe) {
