@@ -16,14 +16,17 @@ final class FavoriteManageableMock: FavoriteManageable {
     var recipe: Recipe?
     var recipeToDelete: Recipe?
     var checkFavStatusResult: Result<Bool, Error> = .success(true)
-
+    var deleteResult: Result<Void, Error> = .success(())
+    
+    
     func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
         addToFavoriteWasCalled = true
         return addToFavoriteResult
     }
     
-    func delete(recipe: Recipe) {
+    func delete(recipe: Recipe) -> Result<Void, Error> {
         self.recipeToDelete = recipe
+        return deleteResult
     }
     
     func checkFavStatus(recipe: Recipe) -> Result<Bool, Error> {

@@ -1,0 +1,67 @@
+//
+//  CoreDataServiceTests.swift
+//  RecipleaseTests
+//
+//  Created by Claire on 23/03/2020.
+//  Copyright © 2020 Claire Sivadier. All rights reserved.
+//
+import XCTest
+@testable import Reciplease
+
+class CoreDataServiceTests: XCTestCase {
+    
+    var sut: CoreDataService!
+
+    override func setUp() {
+        let testCoreDataStack = TestCoreDataStack(modelName: "Reciplease")
+        sut = CoreDataService(coreDataStack: testCoreDataStack)
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testAddToFavorite() throws {
+        //Given
+        var fetchResult = try sut.fetchRecipes().get()
+        XCTAssert(fetchResult.isEmpty)
+        
+        //When
+        let recipe = Recipe(label: "label", image: "image", url: "url", ingredientLines: ["1", "2", "3"], totalTime: 10)
+        let addResult = sut.addToFavorite(recipe: recipe)
+        XCTAssertNoThrow(try addResult.get())
+        
+        //Then
+        fetchResult = try sut.fetchRecipes().get()
+        XCTAssertEqual(fetchResult.count, 1)
+        XCTAssertEqual(fetchResult[0], recipe)
+    }
+    
+    func testRemoveFromFavorites() throws {
+        //Given
+        try testAddToFavorite()
+
+        //When
+        let recipe = Recipe(label: "label", image: "image", url: "url", ingredientLines: ["1", "2", "3"], totalTime: 10)
+        let deleteResult = sut.delete(recipe: recipe)
+        XCTAssertNoThrow(try deleteResult.get())
+
+        //Then
+        let fetchResult = try sut.fetchRecipes().get()
+        XCTAssert(fetchResult.isEmpty)
+    }
+    
+    func testCheckFavStatus() throws {
+        //Given
+              try testAddToFavorite()
+
+              //When
+              let recipe = Recipe(label: "label", image: "image", url: "url", ingredientLines: ["1", "2", "3"], totalTime: 10)
+              let checkFavStatuResult = sut.checkFavStatus(recipe: recipe)
+            XCTAssertNoThrow(try checkFavStatuResult.get())
+
+              //Then
+              let fetchResult = try sut.fetchRecipes().get()
+        XCTAssert(fetchResult.contains(recipe))
+    }
+}
