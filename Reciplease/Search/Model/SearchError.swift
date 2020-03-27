@@ -1,5 +1,5 @@
 //
-//  SearchRecipesError.swift
+//  SearchError.swift
 //  Reciplease
 //
 //  Created by Claire on 01/01/2020.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum SearchRecipesError: Error, Equatable {
+enum SearchError: Error, Equatable {
     case requestError(NSError)
     case invalidResponseFormat
     case emptyIngredientString
     case emptyIngredientArray
 }
 
-extension SearchRecipesError: LocalizedError {
+extension SearchError: LocalizedError {
     
     var errorDescription: String?  {
         switch self {
