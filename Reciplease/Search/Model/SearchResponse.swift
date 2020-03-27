@@ -1,5 +1,5 @@
 //
-//  SearchRecipesResponse.swift
+//  SearchResponse.swift
 //  Reciplease
 //
 //  Created by Claire on 02/01/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchRecipesResponse: Codable {
+struct SearchResponse: Codable {
     let hits: [RecipeHits]
 }
 

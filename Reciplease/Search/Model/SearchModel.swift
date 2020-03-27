@@ -25,7 +25,7 @@ final class SearchModel {
         let replaced = ingredient.replacingOccurrences(of: " ", with: "")
 
         if replaced.isEmpty {
-            delegate?.show(SearchRecipesError.emptyIngredientString)
+            delegate?.show(SearchError.emptyIngredientString)
         } else {
             ingredients.append(ingredient)
         }
@@ -47,7 +47,7 @@ final class SearchModel {
         return ingredients[indexPath.row]
     }
     
-    func searchRecipes(then: @escaping (Result<[Recipe], SearchRecipesError>) -> Void) {
+    func searchRecipes(then: @escaping (Result<[Recipe], SearchError>) -> Void) {
         guard !ingredients.isEmpty else {
             then(.failure(.emptyIngredientArray))
             return
@@ -61,7 +61,7 @@ final class SearchModel {
         networkService.request(parameters: parameters) { (result) in
             switch result {
             case let.success(data):
-                guard let responseJSON = try? JSONDecoder().decode(SearchRecipesResponse.self, from: data) else {
+                guard let responseJSON = try? JSONDecoder().decode(SearchResponse.self, from: data) else {
                     DispatchQueue.main.async {
                         then(.failure(.invalidResponseFormat))
                     }
