@@ -41,11 +41,12 @@ extension CoreDataService: FavoriteFetchable {
             print("Fetch Result")
             print(result)
             let recipes = result.map {
-                Recipe(label: $0.value(forKey: "label") as? String ?? "",
-                       image: $0.value(forKey: "image") as? String ?? "",
-                       url: $0.value(forKey: "url") as? String ?? "",
+                //All Recipe properties are non-optional, so we can assume there will be data stored for each of its properties
+                Recipe(label: $0.value(forKey: "label") as! String,
+                       image: $0.value(forKey: "image") as! String,
+                       url: $0.value(forKey: "url") as! String,
                        ingredientLines: recoveredIngredientLines(object: $0),
-                       totalTime: $0.value(forKey: "totalTime") as? Int ?? 0)
+                       totalTime: $0.value(forKey: "totalTime") as! Int)
             }
             
             print("Fetch Result - RECIPES")
@@ -68,9 +69,8 @@ extension CoreDataService: FavoriteManageable {
     func addToFavorite(recipe: Recipe, keyedArchiver: NSKeyedArchiver.Type) -> Result<NSManagedObject, Error> {
         
         let managedContext = coreDataStack.persistentContainer.viewContext
-        guard let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext) else {
-            return .failure(NSError(domain: "", code: 0, userInfo: nil))
-        }
+        let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext)!
+        
         let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
         
         do {

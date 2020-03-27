@@ -62,7 +62,7 @@ class CoreDataServiceTests: XCTestCase {
         //Then
         XCTAssertThrowsError(try result.get())
     }
-    
+
     func testRemoveFromFavorites() throws {
         //Given
         try testAddToFavorite()
