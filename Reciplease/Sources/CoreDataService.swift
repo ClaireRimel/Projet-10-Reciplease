@@ -62,22 +62,26 @@ extension CoreDataService: FavoriteFetchable {
 extension CoreDataService: FavoriteManageable {
     
     func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
+        return addToFavorite(recipe: recipe, keyedArchiver: NSKeyedArchiver.self)
+    }
         
+    func addToFavorite(recipe: Recipe, keyedArchiver: NSKeyedArchiver.Type) -> Result<NSManagedObject, Error> {
         
         let managedContext = coreDataStack.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext)!
+        guard let entity = NSEntityDescription.entity(forEntityName: "RecipeEntity", in: managedContext) else {
+            return .failure(NSError(domain: "", code: 0, userInfo: nil))
+        }
         let recipeEntity = NSManagedObject(entity: entity, insertInto: managedContext)
-        let ingredientLinesData = try! NSKeyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
-                                                                    requiringSecureCoding: true)
-        
-        recipeEntity.setValue(recipe.image, forKey: "image")
-        recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
-        recipeEntity.setValue(recipe.label, forKey: "label")
-        recipeEntity.setValue(recipe.url, forKey: "url")
-        recipeEntity.setValue(recipe.totalTime, forKey: "totalTime")
-        
         
         do {
+            let ingredientLinesData = try keyedArchiver.archivedData(withRootObject: recipe.ingredientLines,
+                                                                       requiringSecureCoding: true)
+            
+            recipeEntity.setValue(recipe.image, forKey: "image")
+            recipeEntity.setValue(ingredientLinesData, forKey: "ingredientLines")
+            recipeEntity.setValue(recipe.label, forKey: "label")
+            recipeEntity.setValue(recipe.url, forKey: "url")
+            recipeEntity.setValue(recipe.totalTime, forKey: "totalTime")
             try managedContext.save()
             print("RECIPES Has been added ")
             return .success(recipeEntity)
@@ -88,7 +92,7 @@ extension CoreDataService: FavoriteManageable {
     }
     
     func delete(recipe: Recipe) -> Result<Void, Error> {
-       
+        
         let managedContext = coreDataStack.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
