@@ -24,6 +24,18 @@ class CoreDataServiceTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testFetchRecipesFailure() throws {
+        //Given
+        testCoreDataStack = TestCoreDataStack(modelName: "not existing data model file")
+        sut = CoreDataService(coreDataStack: testCoreDataStack)
+        
+        //When
+        let result = sut.fetchRecipes()
+        
+        //Then
+        XCTAssertThrowsError(try result.get())
+    }
+    
     func testAddToFavorite() throws {
         //Given
         var fetchResult = try sut.fetchRecipes().get()
