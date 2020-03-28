@@ -17,6 +17,10 @@ class TestCoreDataStack: CoreDataStack {
 
         let description =
             NSPersistentStoreDescription()
+        //NSInMemoryStoreType allow use to do CoreData operation, while runnig units test
+        //1. Doesn't modify the our data strored in production app
+        //2. Independent production app states, provide a clean environment to run test on.
+        //3. Ensures that all consequences of the CoreData instructions are discarded after each units test finishes
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false
 
