@@ -11,7 +11,7 @@ import CoreData
 
 protocol RecipesListModelDelegate: ErrorMessageDisplayable {
     
-    func reloadData()
+    func recipesListModelReloadData(_ recipesListModel: RecipesListModel)
 }
 
 final class RecipesListModel {
@@ -46,7 +46,7 @@ final class RecipesListModel {
         switch coreDataService.fetchRecipes() {
         case let .success(recipes):
             self.recipes = recipes
-            self.delegate?.reloadData()
+            self.delegate?.recipesListModelReloadData(self)
         case let .failure(error):
             self.delegate?.show(error)
         }

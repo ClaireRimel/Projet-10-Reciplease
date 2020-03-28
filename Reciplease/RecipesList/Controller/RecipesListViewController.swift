@@ -83,7 +83,7 @@ extension RecipesListViewController: UITableViewDelegate {
 
 extension RecipesListViewController: RecipesListModelDelegate {
     
-    func reloadData() {
+    func recipesListModelReloadData(_ recipesListModel: RecipesListModel) {
         listTableView.reloadData()
     }
 }

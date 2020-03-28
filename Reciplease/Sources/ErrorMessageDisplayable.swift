@@ -13,7 +13,8 @@ protocol ErrorMessageDisplayable: class {
     
     func show(_ error: Error)
 }
-
+// "where" keyword constrains the protocol extension to be only accessible to UIViewController instances that have conformence to this protocol.
+// Other classes will have to provide their own implementation.
 extension ErrorMessageDisplayable where Self: UIViewController {
     
     func show(_ error: Error) {
