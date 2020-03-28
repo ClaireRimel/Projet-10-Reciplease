@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Elememts used from the json response
 struct SearchResponse: Codable {
     let hits: [RecipeHits]
 }

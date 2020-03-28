@@ -59,7 +59,6 @@ final class RecipeDetailsModel {
         }
     }
     
-    
     func checkFavStatus() -> Bool {
         switch coreDataService.checkFavStatus(recipe: recipe) {
         case let .success(isFavorite):

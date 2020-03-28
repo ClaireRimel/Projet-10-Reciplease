@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Enumeration of the error cases
 enum SearchError: Error, Equatable {
     case requestError(NSError)
     case invalidResponseFormat

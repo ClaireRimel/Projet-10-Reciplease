@@ -9,10 +9,11 @@
 import Foundation
 
 final class RecipesListModelDelegateMock: RecipesListModelDelegate {
+        
     var reloadDataWasCalled = false
     var error: Error?
     
-    func reloadData() {
+    func recipesListModelReloadData(_ recipesListModel: RecipesListModel) {
         reloadDataWasCalled = true
     }
     

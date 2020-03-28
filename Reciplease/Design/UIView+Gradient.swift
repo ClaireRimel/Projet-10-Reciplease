@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Use a Gradient style of the imgage homogeneously
 extension UIView {
     
    static func addGradient(to view: UIView) {

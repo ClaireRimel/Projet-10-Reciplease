@@ -16,6 +16,5 @@ protocol FavoriteManageable {
     func delete(recipe: Recipe) -> Result<Void, Error>
     
     func checkFavStatus(recipe: Recipe) -> Result<Bool, Error>
-    
 }
 

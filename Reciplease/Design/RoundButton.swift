@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Use a rounded style of the button homogeneously 
 class RoundButton: UIButton {
     
     override func layoutSubviews() {

@@ -72,8 +72,6 @@ final class SearchViewController: UIViewController {
                 let recipes = sender as? [Recipe] {
                 let model = RecipesListModel(source: .search(recipes))
                 destination.model = model
-                
-                
             }
         }
     }
