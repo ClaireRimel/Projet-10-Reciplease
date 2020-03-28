@@ -9,7 +9,7 @@
 import UIKit
 
 //Centralize the error message
-protocol ErrorMessageDisplayable: class {
+protocol ErrorMessageDisplayable: AnyObject {
     
     func show(_ error: Error)
 }
