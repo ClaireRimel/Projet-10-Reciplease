@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+//Implement the content of the cell
 final class RecipeTableViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!

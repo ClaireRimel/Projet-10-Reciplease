@@ -8,6 +8,7 @@
 
 import UIKit
 
+//implement the contents of the cell
 final class IngredientTableViewCell: UITableViewCell {
     
     var ingredient: String = "" {

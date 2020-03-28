@@ -31,7 +31,6 @@ final class CoreDataService {
 extension CoreDataService: FavoriteFetchable {
     
     func fetchRecipes() -> Result<[Recipe], Error> {
-        
         let managedContext = coreDataStack.persistentContainer.viewContext
 
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
@@ -58,14 +57,7 @@ extension CoreDataService: FavoriteFetchable {
             return .failure(error)
         }
     }
-}
-
-extension CoreDataService: FavoriteManageable {
     
-    func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
-        return addToFavorite(recipe: recipe, keyedArchiver: NSKeyedArchiver.self)
-    }
-        
     func addToFavorite(recipe: Recipe, keyedArchiver: NSKeyedArchiver.Type) -> Result<NSManagedObject, Error> {
         
         let managedContext = coreDataStack.persistentContainer.viewContext
@@ -90,9 +82,15 @@ extension CoreDataService: FavoriteManageable {
             return .failure(error)
         }
     }
+}
+
+extension CoreDataService: FavoriteManageable {
+    
+    func addToFavorite(recipe: Recipe) -> Result<NSManagedObject, Error> {
+        return addToFavorite(recipe: recipe, keyedArchiver: NSKeyedArchiver.self)
+    }
     
     func delete(recipe: Recipe) -> Result<Void, Error> {
-        
         let managedContext = coreDataStack.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
@@ -117,7 +115,6 @@ extension CoreDataService: FavoriteManageable {
     }
     
     func checkFavStatus(recipe: Recipe) -> Result<Bool, Error> {
-        
         let managedContext = coreDataStack.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipeEntity")
@@ -126,7 +123,6 @@ extension CoreDataService: FavoriteManageable {
         do {
             let result = try managedContext.fetch(fetchRequest)
             return .success(result.count == 1)
-            
             
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")

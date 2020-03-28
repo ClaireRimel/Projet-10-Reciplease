@@ -14,7 +14,6 @@ final class SearchModel {
     
     let networkService: NetworkServiceInterface
     weak var delegate: ErrorMessageDisplayable?
-
     
     //default arguments
     init(networkService: NetworkServiceInterface = NetworkService()) {
@@ -23,7 +22,6 @@ final class SearchModel {
     
     func add(ingredient: String) {
         let replaced = ingredient.replacingOccurrences(of: " ", with: "")
-
         if replaced.isEmpty {
             delegate?.show(SearchError.emptyIngredientString)
         } else {

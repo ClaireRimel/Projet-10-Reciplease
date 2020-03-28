@@ -26,6 +26,7 @@ final class RecipeDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         model?.delegate = self
         
+        //Check the status of the recipe
         if model?.checkFavStatus() == true {
             favoriteBarButtonItem.image = UIImage(systemName: "star.fill")
         } else {
@@ -100,6 +101,4 @@ extension RecipeDetailsViewController: UITableViewDelegate {
     }
 }
 
-extension RecipeDetailsViewController: ErrorMessageDisplayable {
-    
-}
+extension RecipeDetailsViewController: ErrorMessageDisplayable {}

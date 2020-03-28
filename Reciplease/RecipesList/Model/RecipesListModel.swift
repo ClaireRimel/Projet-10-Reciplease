@@ -9,7 +9,12 @@
 import UIKit
 import CoreData
 
-class RecipesListModel {
+protocol RecipesListModelDelegate: ErrorMessageDisplayable {
+    
+    func reloadData()
+}
+
+final class RecipesListModel {
     //name space
     enum Source {
         case search([Recipe])
@@ -67,8 +72,3 @@ class RecipesListModel {
         }
     }
 }
-
-protocol RecipesListModelDelegate: ErrorMessageDisplayable {
-    func reloadData()
-}
-
