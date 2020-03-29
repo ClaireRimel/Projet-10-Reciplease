@@ -59,6 +59,7 @@ final class SearchModel {
         networkService.request(parameters: parameters) { (result) in
             switch result {
             case let.success(data):
+                // Verifies that the received JSON in the server response has a format that we expect
                 guard let responseJSON = try? JSONDecoder().decode(SearchResponse.self, from: data) else {
                     DispatchQueue.main.async {
                         then(.failure(.invalidResponseFormat))
