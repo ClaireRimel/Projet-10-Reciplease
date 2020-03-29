@@ -7,8 +7,7 @@
 //
 
 import Foundation
-
-//Elememts used from the json response
+// Represents the JSON response for the Edamam API to get recipes information. The JSON structure is represented by the the different structs defined in this file
 struct SearchResponse: Codable {
     let hits: [RecipeHits]
 }
