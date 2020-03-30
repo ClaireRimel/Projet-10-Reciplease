@@ -19,7 +19,8 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.delegate = self   
+        model.delegate = self
+        ingredientsTextField.delegate = self
     }
     
     @IBAction func addIngredient() {
@@ -112,3 +113,11 @@ extension SearchViewController: UITableViewDelegate {
 }
 
 extension SearchViewController: ErrorMessageDisplayable {}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
